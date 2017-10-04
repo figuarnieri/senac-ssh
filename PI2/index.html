@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,900" rel="stylesheet">
+	<title>PROJETO TELA-LOGIN</title>
+	<style>
+
+
+		body{font-family: 'Raleway', sans-serif;}
+		.login--bg{height: 100vh;width: 100vw;position: fixed;left: 0;top: 0;z-index: -1;}
+		.login--bg:before{content: '';position: absolute;right: 0;top: 0;width: 50vw;height: 100vh;box-shadow: 0px 0px 30px 0px; 
+		 background-color: rgb(237, 136, 1);}
+		
+		
+		.container{min-height: 100vh;}
+		.d-fx{display: flex;flex-wrap: nowrap;}
+		.cadastro_texto_imagem{width: 50vw;}
+		.cadastro{width: 50vw; font-size: 15px;}
+
+		.texto{width: 100%; margin-top: 10%; padding-right: 2%; text-align: center;}
+		.row-1{font-weight:400;color: #808080;}
+		.row-2{font-weight: 400;color: #808080;}
+		.row-3{font-weight: 900;color: #686868;}
+
+		.cadastro--imagem{max-width: 350px; width: 100%; height: auto; margin: 50% 0% 0% 15%; }
+		
+		.word_login_cadastro{font-size:35px; color:#ffcccc; margin-top:10%; padding-left:10%;}
+		.word_login{margin-right: 5%;}
+		.word_cadastro{margin-left: 5%;}
+		
+	
+		
+		form{width:100%;margin-left: 10%; margin-top: 20%;}
+		input{width: 100%; box-sizing: border-box; border:none; border-bottom:1px solid #ffcccc; margin-bottom: 5%; background-color: rgb(237, 136, 1); padding: 1%;}
+
+		/* CLICANDO NO INPUT MOSTRA AS BORDAS -- PERGUNTAR PRO FI COMO TIRA ISSO */
+
+		input::placeholder{color: #ffcccc;}
+		.word_form{color:white;font-size: 17px;}
+
+
+
+		/* perguntar pro fi POSITION DO BOTAO - AO INVES DE FAZER COM MARGIN */ 
+		.button_form_cadastro{padding: 2% 5% 2% 5%; font-size:17px; background: white; color:rgb(237, 136, 1); border: none; border-radius: 5px; cursor:pointer;  position: relative; left: 77%; }
+		
+		/* REGULAGEM DO OLHO ERRADA -- PERGUNTAR PRO FI */ 
+		.input_password{position: relative;}
+		.input_password_olho{position: absolute; left:80%; top:43%; color: white; font-size: 20px; cursor: pointer;}
+
+	</style>
+</head>
+<body>
+
+<div class="login--bg"></div>
+	<div class="container d-fx">
+
+			<!--
+			 Define o elemento como um h1 mesmo ele nao sendo h1. role="heading" aria-level="1"
+			-->
+
+		<div class="cadastro_texto_imagem">
+			<div class="texto">
+				<h2 class="row-1">Seja Bem-vindo ao sistema</h2>
+				<h2 class="row-2">gerenciador de arquivos da loja<h2>
+			 	<h2 class="row-3">Foxtrot brinquedos</h2>
+			</div>
+			<img class="cadastro--imagem" src="imagens/LogoFoxtrot.jpg">
+		</div>
+
+
+		<div class="cadastro">
+			<div class="word_login_cadastro">
+				<span class="word_login">LOGIN</span>
+				<span>ou</span>
+				<span class="word_cadastro">CADASTRO</span>
+			</div>
+			
+			<form>
+				<span class="word_form">NOME</span>
+					<input type="text" name="nome" placeholder="Ex.: Fulano da Silva">
+				
+				<span class="word_form">EMAIL</span>
+					<input type="email" name="email" placeholder="Ex.: fulano@email.com.br">
+
+				
+					<span class="word_form">SENHA</span>
+						<input class="input_password" type="password" name="senha">
+						<i class="input_password_olho fa fa-eye" ></i>
+
+					<button class="button_form_cadastro">ACESSAR</button>
+			</form>
+	 	</div>
+		
+	</div>
+</body>
+</html>
+
+
+
