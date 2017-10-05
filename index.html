@@ -120,6 +120,21 @@
 	 	</div>
 		
 	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+		
+		$('.input_password_olho').click(function(){
+			var inputType =	$('.input_password').attr('type');
+			if(inputType==='password'){
+				$('.input_password').attr('type','text');
+				$(this).removeClass('fa-eye').addClass('fa-eye-slash');
+			} else {
+				$('.input_password').attr('type','password');
+				$(this).addClass('fa-eye').removeClass('fa-eye-slash');
+			}
+		})
+
+	</script>
 </body>
 </html>
 
