@@ -62,9 +62,16 @@ if(!empty($login) || !empty($senha)){
 					<input type="hidden" name="redirect_url" value="<?php echo $_GET['redirect_url']?>">
 				<?php } ?>
 				<label for="Login" class="login--label d-b">Login</label>
-				<input class="login--input" type="text" name="Login" id="Login" placeholder="Ex.: login@email.com" value="jo">
-				<label for="Senha" class="login--label d-b">Senha</label>
-				<input class="login--input" type="password" name="Senha" id="Senha" value="123">
+				<input class="login--input" type="text" name="Login" id="Login" placeholder="Ex.: login@email.com" value="">
+				<style>
+					.login--field{position: relative;}
+					.login--field .fa{position: absolute;right: 5px;top: 25px;font-size: 20px;cursor: pointer;}
+				</style>
+				<div class="login--field">
+					<label for="Senha" class="login--label d-b">Senha</label>
+					<input class="login--input" type="password" name="Senha" id="Senha" value="" data-keypass>
+					<i class="fa fa-eye d-n" data-showpass></i>
+				</div>
 				<div class="cf d-b">
 					<div class="fl-l">
 						<a href="" class="login--passlost">Esqueci minha senha</a>
@@ -112,5 +119,19 @@ if(!empty($login) || !empty($senha)){
 		});
 		$($(this).data('login')).show(600);
 		$(this).addClass('login--area-active');
-	})
+	});
+	$('[data-showpass]').mousedown(function(){
+		$(this).addClass('fa-eye-slash').removeClass('fa-eye');
+		$(this).prev().attr('type','text');
+	}).mouseup(function(){
+		$(this).addClass('fa-eye').removeClass('fa-eye-slash');
+		$(this).prev().attr('type','password');
+	});
+	$('[data-keypass]').keyup(function(){
+		if($(this).val()!==''){
+			$(this).next().removeClass('d-n');
+		} else {
+			$(this).next().addClass('d-n');
+		}
+	});
 </script>
