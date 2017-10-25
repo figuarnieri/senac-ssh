@@ -1,0 +1,37 @@
+@import "../../lib/mixins";
+
+@include device(tablet) {
+	.wrap{width: 96%;}
+	.formError{
+		position: relative !important;top: 0 !important;left: 0 !important;margin-top: 0 !important;
+		.formErrorContent{max-width: 100%;}
+		.formErrorContent{border-style: none;box-shadow: none;border-radius: 0px;}
+		.formErrorArrow{
+			div{box-shadow: none;}
+			.line8{border-left-style: none;border-right-style: none;}
+			.line7{border-left-style: none;border-right-style: none;}
+			.line6{border-left-style: none;border-right-style: none;}
+			.line5{background-color: #ee0101;}
+			.line4{background-color: #ee0101;}
+			.line3{background-color: #ee0101;}
+		}
+	}
+	.error-box{
+		.error-cotent{position: relative;height: calc(100% - 35px);left: 1%;top: 5px;width: 98%;}
+	}
+	.yiiPager{
+		margin-top: 20px;
+		a{font-size: 18px;}
+	}
+}
+@include device(mobileLand) {
+	.wrap{width: 90%;}
+}
+@include device(mobile) {
+	.wrap{width: 90%;}
+	.error-box{
+		.error-title{font-size: 12px;}
+	}
+}
+
+

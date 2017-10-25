@@ -1,0 +1,9 @@
+//@import "../lib/mixins";
+.dashboard{
+	&--box{
+		border: 1px solid #ccc;border-radius: 4px;padding: 18px 12px 10px;
+		.fa{font-size: 72px;}
+	}
+	&--name{font-size: 20px;margin-bottom: 25px;}
+	.button{max-width: 130px;width: 100%;}
+}

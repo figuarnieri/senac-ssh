@@ -1,0 +1,41 @@
+{
+  "name": "Template",
+  "version": "6.0.0",
+  "description": "Template is pre-coding based in HTML/CSS/JS for Development between Front-end at Ibaro Brasil",
+  "contributors": [
+    {
+      "name": "@figuarnieri",
+      "email": "filipe@ibaro.com.br",
+      "url": "http://studyou.com.br"
+    },
+    {
+      "name": "@didaescala",
+      "email": "adriano@ibaro.com.br",
+      "url": "http://adrianolima.com/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git.ibaro.com.br:/1zero1/repositories/templatyii.com.br"
+  },
+  "bugs": {
+    "email": "suporte@ibaro.com.br"
+  },
+  "keywords": [
+    "HTML Boilerplate",
+    "Template HTML",
+    "Ibaro"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-image": "^2.7.6",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.2"
+  }
+}

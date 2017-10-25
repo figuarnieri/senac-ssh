@@ -1,0 +1,153 @@
+.validity--input-failed {
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+}
+
+.validity--status {
+  padding: 0;
+  opacity: 0;
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+  font-family: sans-serif;
+  border-radius: 2px;
+  transform: scale(0.9);
+  transition: padding .3s, opacity .3s, transform .3s;
+}
+
+.validity--status-complete {
+  padding: 10px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.validity--status-ok {
+  background-color: #7b1;
+  color: #fff;
+}
+
+.validity--status-error {
+  background-color: #d57;
+  color: #fff;
+}
+
+.validity--status-remove {
+  animation: validity-remove .3s forwards;
+}
+
+.validity--alertinput {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.validity--alertinput:focus + .validity--alertbox {
+  display: block;
+}
+
+.validity--notice {
+  position: absolute;
+  font-size: 13px;
+  font-family: sans-serif;
+  color: #fff;
+}
+
+.validity--notice:before {
+  content: '!';
+  text-align: center;
+  background-color: #d57;
+  font-weight: 900;
+  display: block;
+}
+
+.validity--notice:hover .validity--alertbox {
+  display: block;
+}
+
+.validity--notice-bottom .validity--alertbox {
+  bottom: auto;
+  top: 100%;
+}
+
+.validity--notice-bottom .validity--alert {
+  margin-bottom: auto;
+  margin-top: 5px;
+}
+
+.validity--notice-bottom .validity--alert:before {
+  top: auto;
+  bottom: 100%;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+  border-top-style: none;
+}
+
+.validity--alertbox {
+  position: absolute;
+  right: -5px;
+  bottom: 100%;
+  width: 300px;
+  text-align: right;
+  display: none;
+  z-index: 9;
+}
+
+.validity--alert {
+  background-color: rgba(0, 0, 0, 0.7);
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 2px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.validity--alert:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(0, 0, 0, 0.7);
+}
+
+.validity--item {
+  list-style-type: none;
+}
+
+.validity--item:before {
+  content: '- ';
+}
+
+.validity--close {
+  width: 18px;
+  height: 18px;
+  line-height: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 2px;
+}
+
+.validity--close:before {
+  content: '\00d7';
+  font-weight: 600;
+}
+
+.validity--close:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes validity-remove {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}

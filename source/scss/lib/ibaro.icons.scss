@@ -1,0 +1,48 @@
+@import "_mixins";
+
+$path-font: "../../../dist/fonts" !default;
+
+@font-face {
+    font-family: 'Material Icons';
+    src: local('Material Icons'),
+         url('#{$path-font}/MaterialIcons-Regular.woff2') format('woff2'),
+         url('#{$path-font}/MaterialIcons-Regular.woff') format('woff');
+    font-weight: normal;font-style: normal;
+}
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('#{$path-font}/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
+         url('#{$path-font}/fontawesome-webfont.woff?v=4.7.0') format('woff');
+    font-weight: normal;font-style: normal;
+}
+@font-face {
+    font-family: 'Hawcons Stroke';
+    src: url('#{$path-font}/hawcons-stroke.woff2') format('woff2'),
+         url('#{$path-font}/hawcons-stroke.woff') format('woff');
+  font-weight: normal;font-style: normal;
+}
+@font-face {
+    font-family: 'Ionicons';
+    src: url('#{$path-font}/ionicons.woff2') format('woff2'),
+         url('#{$path-font}/ionicons.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+}
+
+.fa, .mi, .hs, .ion {
+  &:before{font-weight: normal;font-style: normal;font-size: inherit;font-variant: normal;display: inline-block;line-height: 1;text-transform: none;letter-spacing: normal;word-wrap: normal;white-space: nowrap;margin-right: 6px;text-rendering: optimizeLegibility;-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;speak: none;}
+  &:empty{
+    &:before{margin-right: 0;}
+  }
+}
+$ibaro-fonts: (fa: 'FontAwesome', mi: 'Material Icons', hs: 'Hawcons Stroke', ion: 'Ionicons');
+@each $FontPrefix, $FontName in $ibaro-fonts{
+  .#{$FontPrefix}{
+    &:before{font-family: $FontName;}
+  }
+}
+
+@import "ibaro-icons/_font-awesome.scss";
+@import "ibaro-icons/_material-icons.scss";
+@import "ibaro-icons/_hawcons-stroke.scss";
+@import "ibaro-icons/_ionicons.scss";

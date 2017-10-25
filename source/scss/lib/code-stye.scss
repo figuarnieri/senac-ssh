@@ -1,0 +1,26 @@
+@import "_mixins.scss";
+
+
+body{font-size: 18px;font-family: serif;color: #888;line-height: 1.4rem;font-family: monospace;}
+.header{font-size: 2rem;background-color: #ddd;width: 100vh;height: 40px;position: fixed;transform: rotate(90deg);transform-origin: 20px 20px;padding-left: 20px;line-height: 40px;}
+.content{width: calc(100% - 40px);min-height: 101vh;margin-left: 40px;}
+.bigtitle{font-size: 1.5rem;}
+.card{
+	&--block{
+		height: 50vh;font-size: 4rem;line-height: 40vh;position: relative;opacity: .8;overflow: hidden;transition: opacity .4s;
+		&:hover{
+			opacity: 1;
+			.card--media{opacity: 0;}
+		}
+		&-1{background-color: #333;color: #fff;}
+		&-2{background-color: #fff;color: #666;}
+		&-3{background-color: #eee;color: #666;}
+		&-4{background-color: #ecb72b;color: #fff;}
+	}
+	&--media{
+		position: absolute;left: 0;top: 0;width: 100%;height: 100%;transition: opacity .4s;
+		&:before{content: '';position: absolute;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(#000, .8);}
+		img, video{width: 100%;height: auto;transition: opacity .4s;}
+	}
+	&--text{position: relative;z-index: 2;}
+}

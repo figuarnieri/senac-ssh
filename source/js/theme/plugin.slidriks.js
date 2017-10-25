@@ -1,0 +1,1 @@
+new Slidriks('[data-slidriks]');

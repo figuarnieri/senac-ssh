@@ -1,0 +1,1 @@
+@media only print{.header,.footer{display:none}main a{text-decoration:underline}main a[href]:after{content:'"' attr(href) '"'}main p a{word-wrap:break-word}}

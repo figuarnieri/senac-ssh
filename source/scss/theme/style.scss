@@ -1,0 +1,10 @@
+@import "../lib/mixins";
+body{font-family: 'Raleway', sans-serif;font-size: 16px;color: #482722;}
+.wrap{max-width: 1000px;}
+.main{padding-top: 70px;}
+.button{
+	background-color: #482722;color: #fff;padding: 8px 20px;border-radius: 4px;
+	&:hover{background-color: lighten(#482722, 15%);}
+	&-breadcrumb{margin-left: 60px;}
+}
+.breadcrumb{font-size: 20px;font-size: 20px;}

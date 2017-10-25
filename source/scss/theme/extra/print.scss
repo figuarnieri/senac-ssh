@@ -1,0 +1,14 @@
+@media only print {
+	.header, .footer{display: none;}
+	main{
+		a{
+			text-decoration: underline;
+			&[href]{
+				&:after{content: "\"" attr(href)"\"";}
+			}
+		}
+		p{
+			a {word-wrap: break-word;}
+		}
+	}
+}

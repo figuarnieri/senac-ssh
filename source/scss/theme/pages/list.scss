@@ -1,0 +1,27 @@
+//@import "../lib/mixins";
+.list{
+	&--content{border: 1px solid #ccc;border-radius: 4px;margin-top: 30px;}
+	&--pages{padding: 7px;}
+	&--pagelist{background-color: #eee;border-radius: 4px;padding: 2px;display: inline-flex;}
+	&--pagebox{
+		.fa{width: 10px;}
+		+ .list--pagebox{margin-left: 2px;}
+	}
+	&--pagelink{background-color: #fff;border-radius: 4px;padding: 3px 14px;height: 30px;line-height: 26px;font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;}
+	&--table{
+		width: 100%;
+		th{background-color: #482722;color: #fff;padding: 8px 0;}
+		tr{
+			td{border-bottom: 1px solid #eee;color: #666;padding: 8px 2px;font-size: 17px;}
+			&:last-child{
+				td{border-bottom: none;}
+			}
+		}
+		.fa-check-circle{color: #729c00;}
+		.fa-times-circle{color: #e66;}
+		.fa-pencil, .fa-trash{
+			margin: 0 10px;
+			&:hover{color: #888;}
+		}
+	}
+}

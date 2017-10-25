@@ -1,0 +1,33 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #482722;
+}
+
+.wrap {
+  max-width: 1000px;
+}
+
+.main {
+  padding-top: 70px;
+}
+
+.button {
+  background-color: #482722;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #7c433b;
+}
+
+.button-breadcrumb {
+  margin-left: 60px;
+}
+
+.breadcrumb {
+  font-size: 20px;
+  font-size: 20px;
+}

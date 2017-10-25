@@ -1,0 +1,101 @@
+@import "_mixins.scss";
+
+.cf {
+	display: flex;flex-flow: wrap;
+	&:before, &:after{content: "";display: block;}
+	&:after{clear: both;}
+}
+.ta-c{text-align: center;justify-content: center;}
+.ta-r{text-align: right;justify-content: flex-end;}
+.ta-l{text-align: left;justify-content: flex-start;}
+.va-t{vertical-align: top;align-items: flex-start;}
+.va-m{vertical-align: middle;align-items: center;}
+.va-b{vertical-align: bottom;align-items: flex-end;}
+.d-n{display: none;}
+.d-ib{display: inline-block;}
+.d-b{display: block;}
+.fl-l{float: left;}
+.fl-r{float: right;}
+.wrap{width: 100%;margin-left: auto;margin-right: auto;position: relative;}
+._text, ._submit, ._button, ._cancel{display: inline-block;}
+.img-center{display: block;margin-left: auto;margin-right: auto;}
+.img-responsive{display: block;max-width: 100%;height: auto;}
+.noscript{
+	z-index: 9999;position: relative;
+	&:before{content: 'Infelizmente sua página não poderá funcionar corretamente, pois o javascript do seu navegador está desabilitado. Habilite-o para ter uma melhor navegação e funcionalidades neste site.';background-color: #c00;color: #fff;font-family: Arial;font-size: 16px;padding: 20px;display: block;}
+}
+.__error-img{box-shadow: 0 0 0 2px rgba(255, 0, 0, .6);}
+[pseudo-before]{
+	&:before{content: attr(pseudo-before);}
+}
+[pseudo-after]{
+	&:after{content: attr(pseudo-after);}
+}
+
+/* Validação <form> Backend */
+.error-box{
+	background-color: rgba(255,100,100, .95);border-radius: 6px;font-family: Arial, Verdana;font-size: 12px;display: inline-block;color: #fff;padding: 5px 15px;margin-bottom: 5px;position: relative;
+	td{vertical-align: top;padding-bottom: 5px;}
+	&.fixed{position: fixed;left: 50%;top: 10px;width: 320px;margin-left: -160px;z-index: 9999;}
+	.error-cotent{left: 5px;right: 5px;top: 30px;bottom: 5px;overflow: auto;}
+	.error-title{font-size: 16px;padding: 2px 35px;font-weight: bold;color: #900;text-shadow: -1px 1px 0 rgba(255,255,255, .3);}
+	.error-name{white-space: nowrap;padding-left: 10px;padding-top: 3px;padding-right: 2px;color: #600;font-weight: bold;}
+	.error-item{background-color: #d33;color: #fff;padding: 2px 5px;margin: 1px;border-radius: 3px;}
+	.error-close{
+		position: absolute;right: 5px;top: 5px;font-size: 10px;width: 20px;height: 20px;line-height: 22px;background-color: #900;color: #fff;border-radius: 100%;
+		&:before{content: '\274c';}
+	}
+}
+
+/* Assinatura Ibaro */
+$ioSignSegundos :  .5s;
+@include keyframes (io-step-top) {
+	0%{
+		@include transform(rotateX(0deg) translateY(-16px));top: 0%;opacity: 1;background-color: rgba(#fff, .2);
+	}
+	60%{
+		@include transform(rotateX(92deg) translateY(-16px));top: -100%;opacity: .8;background-color: rgba(#fff, .2);
+	}
+	100%{
+		@include transform(rotateX(92deg) translateY(-16px));top: -100%;opacity: 0;background-color: rgba(#000, .3);
+	}
+}
+@include keyframes (io-step-bottom) {
+	0%{
+		@include transform(rotateX(-92deg) translateY(16px));top: 0%;opacity: 0;background-color: rgba(#000, .3);
+	}
+	60%{
+		@include transform(rotateX(0deg) translateY(16px));top: -100%;opacity: .8;background-color: rgba(#fff, .2);
+	}
+	100%{
+		@include transform(rotateX(0deg) translateY(16px));top: -100%;opacity: 1;background-color: rgba(#fff, .2);
+	}
+}
+.io-sign{border: 0 solid transparent;overflow: hidden;width: 140px;height: 50px;background-color: transparent;display: inline-block;margin-top: 15px;}
+.io-embed{
+	width: 130px;height: 32px;line-height: 28px;margin: 32px 5px 0;position: relative;font-family: 'Century Gothic', Arial;font-size: 12px;display: inline-block;text-align: center;@include perspective(130px);@include perspective-origin(50% 50%);cursor: pointer;color: #888;
+	&:before{content: 'powered by';position: absolute;left: 28px;top: -40px;font-size: 10px;color: #aaa;}
+	&:hover{
+		.io-step{box-shadow: 0 0 5px #ddd;}
+		.io-step-0{@include animation(io-step-top linear ($ioSignSegundos * 1));@include animation-delay($ioSignSegundos * 0);@include animation-fill-mode(both);}
+		.io-step-1{@include animation(io-step-bottom linear ($ioSignSegundos * 1), io-step-top linear ($ioSignSegundos * 1));@include animation-delay($ioSignSegundos * 0, $ioSignSegundos * 3);@include animation-fill-mode(forwards);}
+		.io-step-2{@include animation(io-step-bottom linear ($ioSignSegundos * 1), io-step-top linear ($ioSignSegundos * 1));@include animation-delay($ioSignSegundos * 3, $ioSignSegundos * 6);@include animation-fill-mode(forwards);}
+		.io-step-3{@include animation(io-step-bottom linear ($ioSignSegundos * 1), io-step-top linear ($ioSignSegundos * 1));@include animation-delay($ioSignSegundos * 6, $ioSignSegundos * 9);@include animation-fill-mode(forwards);}
+		.io-step-4{@include animation(io-step-bottom linear ($ioSignSegundos * 1));@include animation-delay($ioSignSegundos * 9);@include animation-fill-mode(both);}
+	}
+	.io-step-img{height: 18px;margin-top: 5px;}
+	.io-step{position: absolute;left: 0;top: -100%;height: inherit;width: inherit;padding: 2px;@include backface-visibility(hidden); opacity:0;color: #999;}
+	.io-step-0{opacity: 1; top: -50%;}
+	.io-step-2, .io-step-3{line-height: 13px;}
+    .io-sign-yellow{fill:#f2be1a;}
+    .io-sign-gray{fill:#858889;}
+}
+.io-embed-white{
+	&:before{color: rgba(#fff, .5);}
+    .io-sign-yellow{fill:#fff;}
+    .io-sign-gray{fill:#fff;}
+    .io-step{color: #fff;}
+}
+.io-right{
+	&:before{left: 43px;}
+}

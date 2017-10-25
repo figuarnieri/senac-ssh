@@ -1,0 +1,357 @@
+@charset "UTF-8";
+.cf {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.cf:before, .cf:after {
+  content: "";
+  display: block;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.ta-c {
+  text-align: center;
+  justify-content: center;
+}
+
+.ta-r {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.ta-l {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.va-t {
+  vertical-align: top;
+  align-items: flex-start;
+}
+
+.va-m {
+  vertical-align: middle;
+  align-items: center;
+}
+
+.va-b {
+  vertical-align: bottom;
+  align-items: flex-end;
+}
+
+.d-n {
+  display: none;
+}
+
+.d-ib {
+  display: inline-block;
+}
+
+.d-b {
+  display: block;
+}
+
+.fl-l {
+  float: left;
+}
+
+.fl-r {
+  float: right;
+}
+
+.wrap {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+._text, ._submit, ._button, ._cancel {
+  display: inline-block;
+}
+
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.noscript {
+  z-index: 9999;
+  position: relative;
+}
+
+.noscript:before {
+  content: 'Infelizmente sua página não poderá funcionar corretamente, pois o javascript do seu navegador está desabilitado. Habilite-o para ter uma melhor navegação e funcionalidades neste site.';
+  background-color: #c00;
+  color: #fff;
+  font-family: Arial;
+  font-size: 16px;
+  padding: 20px;
+  display: block;
+}
+
+.__error-img {
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.6);
+}
+
+[pseudo-before]:before {
+  content: attr(pseudo-before);
+}
+
+[pseudo-after]:after {
+  content: attr(pseudo-after);
+}
+
+/* Validação <form> Backend */
+.error-box {
+  background-color: rgba(255, 100, 100, 0.95);
+  border-radius: 6px;
+  font-family: Arial, Verdana;
+  font-size: 12px;
+  display: inline-block;
+  color: #fff;
+  padding: 5px 15px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.error-box td {
+  vertical-align: top;
+  padding-bottom: 5px;
+}
+
+.error-box.fixed {
+  position: fixed;
+  left: 50%;
+  top: 10px;
+  width: 320px;
+  margin-left: -160px;
+  z-index: 9999;
+}
+
+.error-box .error-cotent {
+  left: 5px;
+  right: 5px;
+  top: 30px;
+  bottom: 5px;
+  overflow: auto;
+}
+
+.error-box .error-title {
+  font-size: 16px;
+  padding: 2px 35px;
+  font-weight: bold;
+  color: #900;
+  text-shadow: -1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.error-box .error-name {
+  white-space: nowrap;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-right: 2px;
+  color: #600;
+  font-weight: bold;
+}
+
+.error-box .error-item {
+  background-color: #d33;
+  color: #fff;
+  padding: 2px 5px;
+  margin: 1px;
+  border-radius: 3px;
+}
+
+.error-box .error-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  line-height: 22px;
+  background-color: #900;
+  color: #fff;
+  border-radius: 100%;
+}
+
+.error-box .error-close:before {
+  content: '\274c';
+}
+
+/* Assinatura Ibaro */
+@keyframes io-step-top {
+  0% {
+    transform: rotateX(0deg) translateY(-16px);
+    top: 0%;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  60% {
+    transform: rotateX(92deg) translateY(-16px);
+    top: -100%;
+    opacity: .8;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    transform: rotateX(92deg) translateY(-16px);
+    top: -100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes io-step-bottom {
+  0% {
+    transform: rotateX(-92deg) translateY(16px);
+    top: 0%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  60% {
+    transform: rotateX(0deg) translateY(16px);
+    top: -100%;
+    opacity: .8;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    transform: rotateX(0deg) translateY(16px);
+    top: -100%;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.io-sign {
+  border: 0 solid transparent;
+  overflow: hidden;
+  width: 140px;
+  height: 50px;
+  background-color: transparent;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.io-embed {
+  width: 130px;
+  height: 32px;
+  line-height: 28px;
+  margin: 32px 5px 0;
+  position: relative;
+  font-family: 'Century Gothic', Arial;
+  font-size: 12px;
+  display: inline-block;
+  text-align: center;
+  perspective: 130px;
+  perspective-origin: 50% 50%;
+  cursor: pointer;
+  color: #888;
+}
+
+.io-embed:before {
+  content: 'powered by';
+  position: absolute;
+  left: 28px;
+  top: -40px;
+  font-size: 10px;
+  color: #aaa;
+}
+
+.io-embed:hover .io-step {
+  box-shadow: 0 0 5px #ddd;
+}
+
+.io-embed:hover .io-step-0 {
+  animation: io-step-top linear 0.5s;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+.io-embed:hover .io-step-1 {
+  animation: io-step-bottom linear 0.5s, io-step-top linear 0.5s;
+  animation-delay: 0s, 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.io-embed:hover .io-step-2 {
+  animation: io-step-bottom linear 0.5s, io-step-top linear 0.5s;
+  animation-delay: 1.5s, 3s;
+  animation-fill-mode: forwards;
+}
+
+.io-embed:hover .io-step-3 {
+  animation: io-step-bottom linear 0.5s, io-step-top linear 0.5s;
+  animation-delay: 3s, 4.5s;
+  animation-fill-mode: forwards;
+}
+
+.io-embed:hover .io-step-4 {
+  animation: io-step-bottom linear 0.5s;
+  animation-delay: 4.5s;
+  animation-fill-mode: both;
+}
+
+.io-embed .io-step-img {
+  height: 18px;
+  margin-top: 5px;
+}
+
+.io-embed .io-step {
+  position: absolute;
+  left: 0;
+  top: -100%;
+  height: inherit;
+  width: inherit;
+  padding: 2px;
+  backface-visibility: hidden;
+  opacity: 0;
+  color: #999;
+}
+
+.io-embed .io-step-0 {
+  opacity: 1;
+  top: -50%;
+}
+
+.io-embed .io-step-2, .io-embed .io-step-3 {
+  line-height: 13px;
+}
+
+.io-embed .io-sign-yellow {
+  fill: #f2be1a;
+}
+
+.io-embed .io-sign-gray {
+  fill: #858889;
+}
+
+.io-embed-white:before {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.io-embed-white .io-sign-yellow {
+  fill: #fff;
+}
+
+.io-embed-white .io-sign-gray {
+  fill: #fff;
+}
+
+.io-embed-white .io-step {
+  color: #fff;
+}
+
+.io-right:before {
+  left: 43px;
+}
