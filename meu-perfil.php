@@ -3,16 +3,18 @@ include_once 'includes/header.php';
 $app_user = odbc_exec($db, "
 	SELECT *
 	FROM Usuario
-	WHERE idUsuario = ".$_SESSION['userId']);
+	WHERE idUsuario = ".$_SESSION['userId']
+);
 $user = odbc_fetch_array($app_user);
-
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/form.min.css">
 
 <main class="main form wrap cf">
 	<div class="pc-col-20">
 		<span class="breadcrumb fl-l fa fa-user-circle">Meu Perfil</span>
-		<a href="includes/user_delete.php?id=<?php echo $user['idUsuario']; ?>&delete=true" class="fa fa-trash fl-r ta-c">F</a>
+		<?php if($_SESSION['userId']!=='1'){ ?>
+			<a href="includes/user_delete.php?id=<?php echo $user['idUsuario']; ?>&delete=true" class="fa fa-trash fl-r ta-c" data-delete-perfil=""></a>
+		<?php } ?>
 		<!-- FALTA COLOCAR O DESLOGAR NO PARAMETRO -->
 	</div>
 	<form class="pc-col-20" action="includes/user_save.php" method="post">

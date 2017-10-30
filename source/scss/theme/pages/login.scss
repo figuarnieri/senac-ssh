@@ -7,12 +7,17 @@
 		&-strong{font-weight: 900;}
 	}
 	&--svg{
-		width: 240px;height: auto;margin: 160px auto 0;
+		width: 240px;height: auto;margin: 100px auto 0;transform: scale(1.3);stroke: #422b26;stroke-dasharray: 1150px;animation: login--svg 4s forwards;
+		path{transform: scale(.99) translate(3px, 3px);}
 		.st0{fill:#422b26;}
 		.st1{fill:#fcfc33;}
 		.st2{fill:#edcccc;}
 		.st3{fill:#905952;}
 		.st4{fill:#f7e201;}
+	}
+	&--field{
+		position: relative;
+		.fa{position: absolute;right: 5px;top: 25px;font-size: 20px;cursor: pointer;}
 	}
 	&--tabs{color: #905952;font-size: 20px;margin-bottom: 35px;}
 	&--form{
@@ -22,7 +27,7 @@
 		:-ms-input-placeholder{color: #774c46;}
 	}
 	&--area{
-		font-size: 30px;margin-right: 20px;padding-bottom: 5px;cursor: pointer;
+		font-size: 30px;margin-right: 20px;padding-bottom: 5px;cursor: pointer;text-transform: uppercase;
 		&:last-child{margin-left: 20px;}
 		&:not(.login--area-active):hover{color: #bb7268;}
 		&-active{

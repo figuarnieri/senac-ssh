@@ -12,7 +12,10 @@
 		width: 100%;
 		th{background-color: #482722;color: #fff;padding: 8px 0;}
 		tr{
-			td{border-bottom: 1px solid #eee;color: #666;padding: 8px 2px;font-size: 17px;}
+			td{
+				border-bottom: 1px solid #eee;color: #666;padding: 8px 2px;font-size: 17px;
+				.fa-square-o{color: #482722;}
+			}
 			&:last-child{
 				td{border-bottom: none;}
 			}
@@ -23,5 +26,19 @@
 			margin: 0 10px;
 			&:hover{color: #888;}
 		}
+		.fa-square-o{
+			position: relative;font-size: 19px;cursor: pointer;opacity: .8;
+			&:hover{opacity: 1;}
+		}
+		[type="checkbox"]{
+			position: absolute;left: 0;top: 0;width: 1px;height: 1px;overflow: hidden;opacity: 0;
+			&:checked{
+				+ .fa-square-o{
+					opacity: 1;
+					&:before{content: '\f14a';margin-left: -2px;transform: translate(1px, -1px)}
+				}
+			}
+		}
 	}
+	&--input{padding: 8px 12px;border: 1px solid #482722;border-radius: 4px;}
 }

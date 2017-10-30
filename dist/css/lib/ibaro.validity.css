@@ -50,6 +50,7 @@
   font-size: 13px;
   font-family: sans-serif;
   color: #fff;
+  transition: opacity .5s;
 }
 
 .validity--notice:before {
@@ -139,6 +140,10 @@
 
 .validity--close:hover {
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.validity--hide {
+  opacity: 0;
 }
 
 @keyframes validity-remove {

@@ -1,7 +1,7 @@
-window.deviceType = function(e){
+function deviceSize(e){
 	return window.deviceType = (e >= 997) ? 'pc' : (e <= 996 && e > 600) ? 'tablet' : 'mobile';
 }
-deviceType(window.innerWidth);
+deviceSize(window.innerWidth);
 document.querySelectorAll('[data-js]').forEach(item => {
 	if(item.textContent.trim().length){
 		const msg = {
@@ -37,7 +37,8 @@ window.addEventListener('keyup', (e) => {
 	}
 });
 window.addEventListener('resize', () => {
-	deviceType(window.innerWidth);
+	deviceSize(window.innerWidth);
+	console.log(`window.deviceType = '${window.deviceType}'`);
 });
 window.addEventListener('load', () => {
 	document.querySelectorAll('img').forEach(item => {

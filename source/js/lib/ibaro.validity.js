@@ -6,7 +6,7 @@ class Validity {
       cpf: {
         fn: function (input) {
           const value = input.value,
-            valueNumber = value.replace(/[^\d]+/g, '')
+          valueNumber = value.replace(/[^\d]+/g, '')
 
           var add, i, rev
           if (valueNumber.length !== 11 || /(0{11}|1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11})/.test(valueNumber)) {
@@ -45,15 +45,15 @@ class Validity {
       cnpj: {
         fn: function (input) {
           const value = input.value,
-            valueNumber = value.replace(/[^\d]+/g, '')
+          valueNumber = value.replace(/[^\d]+/g, '')
 
           var resultado,
-            tamanho,
-            numeros,
-            digitos,
-            soma,
-            pos,
-            i
+          tamanho,
+          numeros,
+          digitos,
+          soma,
+          pos,
+          i
 
           if (valueNumber.length !== 14 || /(0{14}|1{14}|2{14}|3{14}|4{14}|5{14}|6{14}|7{14}|8{14}|9{14})/.test(valueNumber)) {
             _this.validityAddClass(input)
@@ -124,7 +124,7 @@ class Validity {
   }
   attributes (input) {
     const attributes = ['min', 'max'],
-      inputs = ['email', 'url', 'date', 'number', 'tel']
+    inputs = ['email', 'url', 'date', 'number', 'tel']
 
     if (input.required) {
       input.dataset.validityRequired = ''
@@ -158,8 +158,8 @@ class Validity {
     const _this = this
     tag.querySelectorAll('input, textarea, select').forEach(input => {
       const type = input.getAttribute('data-validity-type') || input.type,
-        value = input.type === 'file' ? input.value : input.value = input.value.trim(),
-        msgError = []
+      value = input.type === 'file' ? input.value : input.value = input.value.trim(),
+      msgError = []
 
       _this.validityRemoveClass(input)
       input.removeAttribute('data-validity-error')
@@ -170,35 +170,35 @@ class Validity {
       if (type) {
         switch (type) {
           case 'email':
-            if (!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
-              _this.validityAddClass(input)
-              msgError.push('E-mail Inválido')
-            }
-            break
+          if (!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
+            _this.validityAddClass(input)
+            msgError.push('E-mail Inválido')
+          }
+          break
           case 'url':
-            if (!/^[(f|ht)tp?s].+.\D$/.test(value)) {
-              _this.validityAddClass(input)
-              msgError.push('URL inválida. Inicie a url com "http://"')
-            }
-            break
+          if (!/^[(f|ht)tp?s].+.\D$/.test(value)) {
+            _this.validityAddClass(input)
+            msgError.push('URL inválida. Inicie a url com "http://"')
+          }
+          break
           case 'date':
-            if (!/^\d{1,2}[-|\/]\d{1,2}[-|\/]\d{2,4}$/.test(value) && value.length > 0) {
-              _this.validityAddClass(input)
-              msgError.push('Data Inválida. Formato deve ser DD/MM/AAAA')
-            }
-            break
+          if (!/^\d{1,2}[-|\/]\d{1,2}[-|\/]\d{2,4}$/.test(value) && value.length > 0) {
+            _this.validityAddClass(input)
+            msgError.push('Data Inválida. Formato deve ser DD/MM/AAAA')
+          }
+          break
           case 'number':
-            if (isNaN(value)) {
-              _this.validityAddClass(input)
-              msgError.push('Número Inválido')
-            }
-            break
+          if (isNaN(value)) {
+            _this.validityAddClass(input)
+            msgError.push('Número Inválido')
+          }
+          break
           case 'tel':
-            if (!/^[\(|\d]+\d(\)|\) | )(\d{3,5}(|-| )\d{4,5})$/.test(value)) {
-              _this.validityAddClass(input)
-              msgError.push('Telefone Inválido. Ex.: (99) 9999-99999')
-            }
-            break
+          if (!/^[\(|\d]+\d(\)|\) | )(\d{3,5}(|-| )\d{4,5})$/.test(value)) {
+            _this.validityAddClass(input)
+            msgError.push('Telefone Inválido. Ex.: (99) 9999-99999')
+          }
+          break
         }
       }
       if (input.hasAttribute('data-validity-max')) {
@@ -244,7 +244,7 @@ class Validity {
       }
       if (input.hasAttribute('data-validity-accept') && input.files.length > 0) {
         const accept = input.getAttribute('data-validity-accept').replace(/,/g, '|'),
-          regex = new RegExp(`(${accept})$`)
+        regex = new RegExp(`(${accept})$`)
 
         Object.keys(input.files).map(() => {
           if (!regex.test(value)) {
@@ -272,12 +272,11 @@ class Validity {
       })
       form.querySelectorAll('.validity--input-failed').forEach((input, i) => {
         var getRect = input.getBoundingClientRect(),
-          top = getRect.top + 2 + window.scrollY,
-          height = input.tagName === 'TEXTAREA' ? 19 : getRect.height - 4,
-          right = getRect.right - height - 2,
-          error = input.getAttribute('data-validity-error').split(',')
+        top = getRect.top + 2 + window.scrollY,
+        height = input.tagName === 'TEXTAREA' ? 19 : getRect.height - 4,
+        right = getRect.right - height - 2,
+        error = input.getAttribute('data-validity-error').split(',')
 
-        console.log(getRect)
         document.body.insertAdjacentHTML('beforeend', `<label class="validity--notice" style="left:${right}px; top:${top}px; width:${height}px; height:${height}px; line-height:${height}px;"></label>`)
         var alertbox = document.body.lastElementChild
         alertbox.insertAdjacentHTML('beforeend', `<input class="validity--alertinput" type="checkbox" /><div class="validity--alertbox"><div class="validity--alert"><ul class="validity--list"></ul></div></div>`)
@@ -286,23 +285,30 @@ class Validity {
         }
         alertbox.addEventListener('mouseover', (event) => {
           const tag = event.target,
-            eventY = event.y,
-            windowHeight = window.innerHeight
+          eventY = event.y,
+          windowHeight = window.innerHeight
 
           if (eventY < windowHeight / 2) {
-            tag.classList.add('validity--notice-bottom')
+            tag.classList.add('validity--notice-bottom');
           }
         })
+        setTimeout(() => {
+          alertbox.classList.add('validity--hide');
+          setTimeout(() => {
+            input.classList.remove('validity--input-failed');
+            alertbox.remove();
+          }, 600);
+        }, 3000);
       })
     }
   }
   send (form) {
     const formData = new FormData(form),
-      xhr = new XMLHttpRequest(),
-      button = form.querySelector('[type="submit"], button:not([type])')
+    xhr = new XMLHttpRequest(),
+    button = form.querySelector('[type="submit"], button:not([type])')
 
     var status = document.querySelector('.validity--status'),
-      message = document.querySelector('.validity--message')
+    message = document.querySelector('.validity--message')
 
     xhr.open('POST', form.action, true)
     xhr.addEventListener('loadstart', (e) => {
@@ -320,15 +326,15 @@ class Validity {
       button.removeAttribute('disabled')
       status.classList.add('validity--status-complete')
       const close = document.querySelector('.validity--close'),
-        closeEvent = setTimeout(() => {
-          const eventTrigger = new MouseEvent('click')
-          close.dispatchEvent(eventTrigger)
-        }, 3000)
+      closeEvent = setTimeout(() => {
+        const eventTrigger = new MouseEvent('click')
+        close.dispatchEvent(eventTrigger)
+      }, 3000)
       close.addEventListener('click', (event) => {
         status.classList.add('validity--status-remove')
         const remove = document.querySelector('.validity--status-remove'),
-          animationduration = window.getComputedStyle(remove).animationDuration,
-          timeduration = parseFloat(animationduration.replace('s', '')) * 1000
+        animationduration = window.getComputedStyle(remove).animationDuration,
+        timeduration = parseFloat(animationduration.replace('s', '')) * 1000
 
         setTimeout(() => {
           status.remove()
@@ -342,20 +348,24 @@ class Validity {
 
       switch (xhr.status) {
         case 200 :
-          status.classList.add('validity--status-ok')
-          message.textContent = (form.dataset.validitySuccess || 'Sua Mensagem foi enviada com sucesso!')
-          form.querySelectorAll('input, select, textarea').forEach(tag => {
-            tag.value = ''
-          })
-          break
+        status.classList.add('validity--status-ok')
+        message.textContent = (form.dataset.validitySuccess || 'Sua Mensagem foi enviada com sucesso!')
+        form.querySelectorAll('input, select, textarea').forEach(tag => {
+          tag.value = ''
+        });
+        if(form.dataset.validityComplete){
+          const fn = new Function(form.dataset.validityComplete);
+          fn();
+        }
+        break
         case 404 :
-          status.classList.add('validity--status-error')
-          message.textContent = 'Form Action URI: 404 Error'
+        status.classList.add('validity--status-error')
+        message.textContent = 'Form Action URI: 404 Error'
         case 500 :
-          status.classList.add('validity--status-error')
-          message.textContent = 'Form Action URI: 500 Error'
+        status.classList.add('validity--status-error')
+        message.textContent = 'Form Action URI: 500 Error'
 
-          break
+        break
       }
     })
     xhr.send(formData)

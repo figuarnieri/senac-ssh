@@ -15,16 +15,16 @@ if(empty($user_id)){
 		INSERT INTO Usuario(loginUsuario, senhaUsuario, nomeUsuario, tipoPerfil, usuarioAtivo)
 		VALUES(?, ?, ?, ?, ?)"
 	);
-	odbc_execute($user_sql, array("$user_login", "$user_senha", "$user_nome", "$user_tipo", $user_ativo));
+	odbc_execute($user_sql, array($user_login, $user_senha, $user_nome, $user_tipo, $user_ativo));
 
 } else {
 
 	$user_sql = odbc_prepare($db, "
 		UPDATE Usuario
-		SET loginUsuario = '$user_login', nomeUsuario = '$user_nome', tipoPerfil = '$user_tipo', usuarioAtivo = $user_ativo
+		SET loginUsuario = ?, nomeUsuario = ?, tipoPerfil = ?, usuarioAtivo = ?
 		WHERE idUsuario = ?"
 	);
-	odbc_execute($user_sql, array($user_id));
+	odbc_execute($user_sql, array($user_login, $user_nome, $user_tipo, $user_ativo, $user_id));
 
 	/*SQL APENAS PARA ATUALIZAR SENHA*/
 	if(!empty($user_senha)){

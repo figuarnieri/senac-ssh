@@ -1,14 +1,20 @@
 <?php
 include_once 'includes/header.php';
-$user_edit = isset($_GET['edit']) && !empty($_GET['edit']) ? true : false;
+$user_edit = isset($_GET['edit']) && !empty($_GET['edit']) && ($_GET['edit']!=='1') ? true : false;
 if($user_edit){
 	$user_sql = odbc_exec($db, '
 		SELECT *
 		FROM Usuario
-		WHERE idUsuario = '.$_GET['edit']);
-		$user = odbc_fetch_array($user_sql);
-		print_r($user);
+		WHERE idUsuario = '.$_GET['edit']
+	);
+	$user = odbc_fetch_array($user_sql);
 }
+$app_user = odbc_exec($db, "
+    SELECT idUsuario
+    FROM Usuario
+    WHERE idUsuario = ".$_SESSION['userId']
+);
+
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/form.min.css">
 
@@ -50,6 +56,9 @@ if($user_edit){
 						);
 						foreach ($item as $key => $value) { ?>
 							<option value="<?php echo $key; ?>" <?php echo $user_edit && $user['tipoPerfil']===$key ? 'selected' : ''?>><?php echo $value; ?></option>
+						<?php } ?>
+						<?php if(odbc_fetch_array($app_user)['idUsuario']==="1"){ ?>
+							<option value="M" <?php echo $user_edit && $user['tipoPerfil']==='M' ? 'selected' : ''?>>Master</option>
 						<?php } ?>
 					</select>
 				</div>

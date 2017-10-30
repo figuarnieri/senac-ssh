@@ -1,5 +1,7 @@
 .validity{
-	&--input-failed{box-shadow: 0 0 0 2px rgba(255, 0, 0, .2);}
+	&--input{
+		&-failed{box-shadow: 0 0 0 2px rgba(255, 0, 0, .2);}
+	}
 	&--status{
 		padding: 0;opacity: 0;margin-top: 10px;position: relative;text-align: center;font-family: sans-serif;border-radius: 2px;transform: scale(.9);transition: padding .3s, opacity .3s, transform .3s;
 		&-complete{padding: 10px;opacity: 1;transform: scale(1);}
@@ -15,7 +17,7 @@
 		}
 	}
 	&--notice{
-		position: absolute;font-size: 13px;font-family: sans-serif;color: #fff;
+		position: absolute;font-size: 13px;font-family: sans-serif;color: #fff;transition: opacity .5s;
 		&:before{content: '!';text-align: center;background-color: #d57;font-weight: 900;display: block;}
 		&:hover{
 			.validity--alertbox{display: block;}
@@ -42,6 +44,7 @@
 		&:before{content: '\00d7';font-weight: 600;}
 		&:hover{background-color: rgba(0,0,0,.6);}
 	}
+	&--hide{opacity: 0;}
 }
 @keyframes validity-remove{
 	0% {opacity: 1;transform: scale(1);}

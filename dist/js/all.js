@@ -1,9 +1,9 @@
 'use strict';
 
-window.deviceType = function (e) {
+function deviceSize(e) {
 	return window.deviceType = e >= 997 ? 'pc' : e <= 996 && e > 600 ? 'tablet' : 'mobile';
-};
-deviceType(window.innerWidth);
+}
+deviceSize(window.innerWidth);
 document.querySelectorAll('[data-js]').forEach(function (item) {
 	if (item.textContent.trim().length) {
 		var msg = {
@@ -39,7 +39,8 @@ window.addEventListener('keyup', function (e) {
 	}
 });
 window.addEventListener('resize', function () {
-	deviceType(window.innerWidth);
+	deviceSize(window.innerWidth);
+	console.log('window.deviceType = \'' + window.deviceType + '\'');
 });
 window.addEventListener('load', function () {
 	document.querySelectorAll('img').forEach(function (item) {
@@ -498,6 +499,98 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var Tipfy = function () {
+    function Tipfy(selector) {
+        _classCallCheck(this, Tipfy);
+
+        var that = this;
+        document.querySelectorAll(selector).forEach(function (item) {
+            if (item.hasAttribute('title')) {
+                var title = item.getAttribute('title');
+                item.dataset.tipfy = title;
+                item.removeAttribute('title');
+            }
+        });
+        document.addEventListener('mouseover', function (e) {
+            var tag = e.target;
+            if (tag.hasAttribute('data-tipfy')) {
+                that.build(tag);
+            }
+        });
+    }
+
+    _createClass(Tipfy, [{
+        key: 'build',
+        value: function build(tag) {
+            var tipfy = tag.dataset.tipfy,
+                rect = tag.getBoundingClientRect();
+            document.body.insertAdjacentHTML('beforeend', '<div class="tipfy--wrap"><div class="tipfy--main">' + tipfy + '</div></div>');
+            var wrap = document.querySelector('.tipfy--wrap'),
+                classCustom = tag.dataset.tipfyClass;
+            try {
+                if (document.querySelector(tipfy) && !tag.hasAttribute('data-tipfy-text')) {
+                    var html = document.querySelector(tipfy).outerHTML;
+                    wrap.children[0].innerHTML = html;
+                }
+            } catch (e) {}
+
+            if (classCustom) {
+                classCustom.split(' ').forEach(function (item) {
+                    wrap.children[0].classList.add(item);
+                });
+            }
+
+            this.side(tag, rect, wrap);
+            this.remove(tag);
+        }
+    }, {
+        key: 'side',
+        value: function side(tag, rect, wrap) {
+            var wrapRect = wrap.getBoundingClientRect(),
+                _top = window.scrollY,
+                _left = window.scrollX,
+                tipSide = tag.dataset.tipfySide || 'top',
+                position = {
+                right: function right() {
+                    wrap.setAttribute('style', 'left: ' + (rect.right + _left) + 'px;top: ' + (rect.y + rect.height / 2 + _top) + 'px;width: ' + wrapRect.width + 'px;');
+                    wrap.children[0].classList.add('tipfy--side-right');
+                },
+                left: function left() {
+                    wrap.setAttribute('style', 'left: ' + (rect.x + _left - wrapRect.width) + 'px;top: ' + (rect.y + rect.height / 2 + _top) + 'px;width: ' + wrapRect.width + 'px;');
+                    wrap.children[0].classList.add('tipfy--side-left');
+                },
+                bottom: function bottom() {
+                    wrap.setAttribute('style', 'left: ' + (rect.x + _left - wrapRect.width / 2 + rect.width / 2) + 'px;top: ' + (rect.bottom + _top) + 'px;height: ' + wrapRect.height + 'px;width: ' + wrapRect.width + 'px;');
+                    wrap.children[0].classList.add('tipfy--side-bottom');
+                },
+                top: function top() {
+                    wrap.setAttribute('style', 'left: ' + (rect.x + _left - wrapRect.width / 2 + rect.width / 2) + 'px;top: ' + (rect.y - wrapRect.height + _top) + 'px;height: ' + wrapRect.height + 'px;width: ' + wrapRect.width + 'px;');
+                    wrap.children[0].classList.add('tipfy--side-top');
+                }
+            };
+            position[tipSide]();
+        }
+    }, {
+        key: 'remove',
+        value: function remove(tag) {
+            tag.addEventListener('mouseout', function (event) {
+                document.querySelectorAll('.tipfy--wrap').forEach(function (item) {
+                    item.remove();
+                });
+            }, {
+                once: true
+            });
+        }
+    }]);
+
+    return Tipfy;
+}();
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var Validity = function () {
   function Validity(element) {
     _classCallCheck(this, Validity);
@@ -788,7 +881,6 @@ var Validity = function () {
               right = getRect.right - height - 2,
               error = input.getAttribute('data-validity-error').split(',');
 
-          console.log(getRect);
           document.body.insertAdjacentHTML('beforeend', '<label class="validity--notice" style="left:' + right + 'px; top:' + top + 'px; width:' + height + 'px; height:' + height + 'px; line-height:' + height + 'px;"></label>');
           var alertbox = document.body.lastElementChild;
           alertbox.insertAdjacentHTML('beforeend', '<input class="validity--alertinput" type="checkbox" /><div class="validity--alertbox"><div class="validity--alert"><ul class="validity--list"></ul></div></div>');
@@ -826,6 +918,13 @@ var Validity = function () {
               tag.classList.add('validity--notice-bottom');
             }
           });
+          setTimeout(function () {
+            alertbox.classList.add('validity--hide');
+            setTimeout(function () {
+              input.classList.remove('validity--input-failed');
+              alertbox.remove();
+            }, 600);
+          }, 3000);
         });
       }
     }
@@ -882,6 +981,10 @@ var Validity = function () {
             form.querySelectorAll('input, select, textarea').forEach(function (tag) {
               tag.value = '';
             });
+            if (form.dataset.validityComplete) {
+              var fn = new Function(form.dataset.validityComplete);
+              fn();
+            }
             break;
           case 404:
             status.classList.add('validity--status-error');

@@ -49,6 +49,10 @@
   font-size: 17px;
 }
 
+.list--table tr td .fa-square-o {
+  color: #482722;
+}
+
 .list--table tr:last-child td {
   border-bottom: none;
 }
@@ -67,4 +71,41 @@
 
 .list--table .fa-pencil:hover, .list--table .fa-trash:hover {
   color: #888;
+}
+
+.list--table .fa-square-o {
+  position: relative;
+  font-size: 19px;
+  cursor: pointer;
+  opacity: .8;
+}
+
+.list--table .fa-square-o:hover {
+  opacity: 1;
+}
+
+.list--table [type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.list--table [type="checkbox"]:checked + .fa-square-o {
+  opacity: 1;
+}
+
+.list--table [type="checkbox"]:checked + .fa-square-o:before {
+  content: '\f14a';
+  margin-left: -2px;
+  transform: translate(1px, -1px);
+}
+
+.list--input {
+  padding: 8px 12px;
+  border: 1px solid #482722;
+  border-radius: 4px;
 }

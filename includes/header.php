@@ -51,26 +51,21 @@
     <link rel="stylesheet" href="dist/css/theme/extra/keyframes.min.css">
     <link rel="stylesheet" href="dist/css/theme/extra/responsive.min.css">
     <script src="dist/js/all.js"></script>
-    <!-- <script src="/dist/js/ibaro.tipfy.min.js" async=""></script>
-    <script src="/dist/js/ibaro.validity.min.js" async=""></script>
-    <script src="/dist/js/plugin.tipfy.min.js" async=""></script>
-    <script src="/dist/js/plugin.validity.min.js" async=""></script>
-    <script src="/dist/js/main.min.js" async=""></script> -->
 
-    <title>Kanino - Sistema Administrador</title>
+    <title>Kanino Pet Shop - Sistema Administrador</title>
 </head>
 <body>
     <noscript class="noscript ta-c"></noscript>
     <?php if($app_login){ ?>
         <div class="header">
             <div class="wrap">
-                <input class="header--check" type="checkbox" id="Menu">
-                <label for="Menu" class="header--icon fa fa-navicon d-ib va-m ta-c"></label>
-                <nav class="header--menu d-ib va-b">
+                <nav class="header--menu d-ib va-b" data-menu>
+                    <input class="header--check" type="checkbox" id="Menu">
+                    <label for="Menu" class="header--icon fa fa-navicon d-ib va-m ta-c"></label>
                     <ul class="header--nav d-n">
                         <li class="header--item"><a class="d-b header--link fa fa-dashboard" href="./">Dashboard</a></li>
                         <li class="header--item"><a class="d-b header--link fa fa-users" href="user_list.php">Usuários</a></li>
-                        <li class="header--item"><a class="d-b header--link fa fa-list" href="#">Categorias</a></li>
+                        <li class="header--item"><a class="d-b header--link fa fa-list" href="category_list.php">Categorias</a></li>
                         <li class="header--item"><a class="d-b header--link fa fa-shopping-bag" href="#">Produtos</a></li>
                         <li class="header--item-row"></li>
                         <li class="header--item"><a class="d-b header--link fa fa-user" href="meu-perfil.php">Meu Perfil</a></li>
@@ -83,7 +78,7 @@
                 <div class="header--name d-ib va-m">
                     <?php
                     $app_user = odbc_exec($db, "
-                        SELECT nomeUsuario
+                        SELECT nomeUsuario, idUsuario
                         FROM Usuario
                         WHERE idUsuario = ".$_SESSION['userId']);
                     ?>
