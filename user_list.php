@@ -30,7 +30,7 @@
 			</div>
 			<table class="list--table" cellpadding="0" cellspacing="0">
 				<tr>
-					<th class="ta-c">
+					<th class="ta-c" width="50">
 						<input type="checkbox" name="SelecioneTodos" id="SelecioneTodos" data-multichange="all">
 						<label for="SelecioneTodos" class="fa fa-square-o"></label>
 					</th>
@@ -45,6 +45,7 @@
 					SELECT *
 					FROM Usuario
 					WHERE idUsuario != $app_id AND idUsuario != 1
+					ORDER BY idUsuario DESC
 				");
 				while($user = odbc_fetch_array($user_sql)){ ?>
 					<tr>
@@ -67,40 +68,5 @@
 		</div>
 	</div>
 </main>
-<script>
-	$('[data-multichange="all"]').change(function(e){
-		if($(this).is(':checked')){
-			$('.list--table td [type="checkbox"]').each(function(f,g){
-				if(!$(g).is(':checked')){
-					$(g).trigger('click');
-				}
-			});
-		} else {
-			$('.list--table td [type="checkbox"]').each(function(f,g){
-				if($(g).is(':checked')){
-					$(g).trigger('click');
-				}
-			});
-		}
-	});
-	$('.list--table td [type="checkbox"]').change(function(e){
-		if($('.list--table td [type="checkbox"]:not(:checked)').length === $('.list--table td [type="checkbox"]').length){
-			$('.list--tools').slideUp(200);
-		} else {
-			$('.list--tools').slideDown(200);
-		}
-	});
-	$('[data-selectchange]').change(function(e) {
-		$(this).closest('form').trigger('submit');
-	});
-	new Tipfy('[data-tipfy]');
-	$('[data-user-status]').click(function(e){
-		if($(this).hasClass('fa-check-circle')){
-			$(this).removeClass('fa-check-circle').addClass('fa-times-circle').attr({'data-tipfy':'Inativo'});
-		} else {
-			$(this).addClass('fa-check-circle').removeClass('fa-times-circle').attr({'data-tipfy':'Ativo'});
-		}
-		$('.tipfy--wrap').remove();
-	});
-</script>
+
 <?php include_once 'includes/footer.php'; ?>

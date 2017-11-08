@@ -9,5 +9,7 @@ $auth_permission = array(
 );
 if(!isset($_SESSION['userId']) && !in_array($_SERVER['SCRIPT_NAME'], $auth_permission)){
     header('Location: ./?redirect_url='.urlencode($_SERVER['REQUEST_URI']));
+} else {
+	$app_redirect = isset($_POST['redirect']) ? $_POST['redirect'] : '';
 }
 ?>

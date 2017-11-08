@@ -3,7 +3,7 @@ include_once 'includes/header.php';
 $user_edit = isset($_GET['edit']) && !empty($_GET['edit']) && ($_GET['edit']!=='1') ? true : false;
 if($user_edit){
 	$user_sql = odbc_exec($db, '
-		SELECT *
+		SELECT idUsuario, loginUsuario, senhaUsuario, nomeUsuario, tipoPerfil, usuarioAtivo
 		FROM Usuario
 		WHERE idUsuario = '.$_GET['edit']
 	);
@@ -14,18 +14,20 @@ $app_user = odbc_exec($db, "
     FROM Usuario
     WHERE idUsuario = ".$_SESSION['userId']
 );
-
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/form.min.css">
 
 <main class="main form wrap cf">
 	<div class="pc-col-20">
 		<span class="breadcrumb fl-l fa fa-user-circle">Usuários / <?php echo $user_edit ? 'Editar' : 'Cadastro' ?></span>
+		<span class="fl-l">
+			<a href="user_list.php" class="button button-breadcrumb">Listagem</a>
+		</span>
 		<?php if($user_edit){ ?>
 			<a href="includes/user_delete.php?id=<?php echo $_GET['edit']; ?>" class="fa fa-trash fl-r ta-c"></a>
 		<?php } ?>
 	</div>
-	<form class="pc-col-20" action="includes/user_save.php" method="post">
+	<form class="pc-col-20" action="includes/user_save.php" method="post" autocomplete="off">
 		<?php if($user_edit){ ?>
 			<input type="hidden" name="id" value="<?php echo $user['idUsuario']?>">
 		<?php } ?>
@@ -100,9 +102,5 @@ $app_user = odbc_exec($db, "
 		</div>
 	</form>
 </main>
-<script>
-	$('[data-passchange]').click(function(e){
-		$(this).closest('.cf').slideUp(400).prev().slideDown(400);
-	});
-</script>
+
 <?php include_once 'includes/footer.php'; ?>

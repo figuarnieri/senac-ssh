@@ -20,18 +20,25 @@
 			</div>
 			<table class="list--table" cellpadding="0" cellspacing="0">
 				<tr>
-					<th class="ta-c"><input type="checkbox" name="SelecioneTodos" id="SelecioneTodos"></th>
+					<th class="ta-c" width="50">
+						<input type="checkbox" name="SelecioneTodos" id="SelecioneTodos" data-multichange="all">
+						<label for="SelecioneTodos" class="fa fa-square-o"></label>
+					</th>
 					<th class="ta-l">Nome</th>
 					<th class="ta-c" width="150">Ações</th>
 				</tr>
 				<?php
 				$category_sql = odbc_exec($db, '
-					SELECT *
+					SELECT idCategoria, nomeCategoria
 					FROM Categoria
+					ORDER BY idCategoria DESC
 				');
 				while($category = odbc_fetch_array($category_sql)){ ?>
 					<tr>
-						<td class="ta-c"><input type="checkbox" name="id<?php echo $category['idCategoria']?>"></td>
+						<td class="ta-c">
+							<input type="checkbox" name="multicheck[]" id="id<?php echo $category['idCategoria']?>" value="<?php echo $category['idCategoria']?>">
+							<label for="id<?php echo $category['idCategoria']?>" class="fa fa-square-o"></label>
+						</td>
 						<td><?php echo utf8_encode($category['nomeCategoria'])?></td>
 						<td class="ta-c">
 							<a class="fa fa-pencil d-ib" href="category.php?edit=<?php echo $category['idCategoria']?>"></a>
@@ -43,9 +50,4 @@
 		</div>
 	</div>
 </main>
-<script>
-	$('[data-passchange]').click(function(e){
-		$(this).closest('.cf').slideUp(400).prev().slideDown(400);
-	});
-</script>
 <?php include_once 'includes/footer.php'; ?>

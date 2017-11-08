@@ -3,6 +3,11 @@
 if(isset($_POST['Login'])) $login = $_POST['Login'];
 if(isset($_POST['Senha'])) $senha = $_POST['Senha'];
 
+$login_error = array(
+	  '1' => 'Login/senha inválido! Tente novamente.'
+	, '2' => 'Login já cadastrado! Tente outro e-mail.'
+);
+
 if(!empty($login) || !empty($senha)){
 	$sql = odbc_prepare($db, "
 		SELECT *
@@ -15,6 +20,10 @@ if(!empty($login) || !empty($senha)){
 		if(!empty($user['idUsuario'])){
 			$_SESSION['userId'] = $user['idUsuario'];
 			header('Location: '. (isset($_POST['redirect_url']) ? $_POST['redirect_url'] : './') );
+			if(empty($_POST['Login'])) $_GET['error'] = '2';
+			exit();
+		} else {
+			$_GET['error'] = '1';
 		}
 	};
 }
@@ -52,12 +61,16 @@ if(!empty($login) || !empty($senha)){
 	<div class="pc-col-9 -pc-col-2">
 		<div class="login--form">
 			<div class="login--tabs">
-				<a class="login--area login--area-active" data-login="#formLogin">Login</a> ou <a class="login--area" data-login="#formCadastro">Cadastro</a>
+				<?php if(isset($_GET['error']) && $_GET['error'] === '2'){ ?>
+					<a class="login--area" data-login="#formLogin">Login</a> ou <a class="login--area login--area-active" data-login="#formCadastro">Cadastro</a>
+				<?php } else { ?>
+					<a class="login--area login--area-active" data-login="#formLogin">Login</a> ou <a class="login--area" data-login="#formCadastro">Cadastro</a>
+				<?php } ?>
 			</div>
-			<?php if(isset($_POST['Login'])) { ?>
-				<div class="login--alert ta-c">Seu login ou senha está inválido!</div>
+			<?php if(isset($_GET['error'])) { ?>
+				<div class="login--alert ta-c"><?php echo $login_error[$_GET['error']]; ?></div>
 			<?php } ?>
-			<form id="formLogin" action="./" method="post" data-validity-success="Acesso liberado" data-validity-complete="setTimeout(()=>{location.reload();},1000)">
+			<form class="<?php echo $_GET['error']==='2' ? 'd-n' : 'd-b' ?>" id="formLogin" action="./" method="post">
 				<?php if(isset($_GET['redirect_url'])) { ?>
 					<input type="hidden" name="redirect_url" value="<?php echo $_GET['redirect_url']?>">
 				<?php } ?>
@@ -77,7 +90,7 @@ if(!empty($login) || !empty($senha)){
 					</div>
 				</div>
 			</form>
-			<form class="d-n" id="formCadastro" action="includes/user_save.php" method="post">
+			<form class="<?php echo $_GET['error']==='2' ? 'd-b' : 'd-n' ?>" id="formCadastro" action="includes/user_save.php" method="post">
 				<label for="Nome" class="login--label d-b">Nome</label>
 				<input class="login--input" type="text" name="Nome" id="Nome" placeholder="Ex.: Fulano da Silva">
 				<label for="Login" class="login--label d-b">Login</label>
@@ -86,14 +99,13 @@ if(!empty($login) || !empty($senha)){
 				<input class="login--input" type="password" name="Senha" id="Senha" value="123">
 				<label for="Perfil" class="login--label d-b">Perfil</label>
 				<select class="login--input" name="Perfil" id="Perfil">
-					<option value="">Selecione</option>
 					<?php
 					$item = array(
 						"A" => "Administrador",
 						"E" => "Editor",
 					);
 					foreach ($item as $key => $value) { ?>
-						<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+						<option value="<?php echo $key; ?>" <?php echo $key==='E' ? 'selected' : '' ?> ><?php echo $value; ?></option>
 					<?php } ?>
 				</select>
 				<div class="cf d-b">
@@ -117,36 +129,3 @@ if(!empty($login) || !empty($senha)){
 		</div>
 	</div>
 </main>
-<script>
-	$('[data-login]').click(function(e){
-		e.preventDefault();
-		var btnText = $(this).text()
-		if($(this).hasClass('login--area-active')) return;
-		$('[data-login]').each(function(f, g){
-			$($(g).data('login')).hide(600);
-			$(this).removeClass('login--area-active');
-		});
-		if(btnText.toLowerCase() === 'cadastro'){
-			$($(this).data('login')).show(600);
-			$(this).addClass('login--area-active');
-		} else {
-			$($(this).data('login')).show(600);
-			$('.login--tabs .login--area:first-child').addClass('login--area-active');
-		}
-	});
-	$('[data-showpass]').mousedown(function(){
-		$(this).addClass('fa-eye-slash').removeClass('fa-eye');
-		$(this).prev().attr('type','text');
-	}).mouseup(function(){
-		$(this).addClass('fa-eye').removeClass('fa-eye-slash');
-		$(this).prev().attr('type','password');
-	});
-	$('[data-keypass]').keyup(function(){
-		if($(this).val()!==''){
-			$(this).next().removeClass('d-n');
-		} else {
-			$(this).next().addClass('d-n');
-		}
-	});
-	new Validity('form');
-</script>

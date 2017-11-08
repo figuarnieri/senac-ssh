@@ -15,6 +15,9 @@ if($category_edit){
 <main class="main form wrap cf">
 	<div class="pc-col-20">
 		<span class="breadcrumb fl-l fa fa-list">Categoria / <?php echo $category_edit ? 'Editar' : 'Cadastro' ?></span>
+		<span class="fl-l">
+			<a href="category_list.php" class="button button-breadcrumb">Listagem</a>
+		</span>
 		<?php if($category_edit){ ?>
 			<a href="includes/category_delete.php?id=<?php echo $_GET['edit']; ?>" class="fa fa-trash fl-r ta-c"></a>
 		<?php } ?>
