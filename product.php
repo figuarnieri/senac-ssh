@@ -79,11 +79,14 @@ $category_sql = odbc_exec($db, '
 				<div class="pc-col-4">
 					<?php if($product_edit) { ?>
 						<?php if(empty(base64_encode($product['imagem']))){ ?>
-							<div class="ta-c">
-								<i class="fa fa-shopping-bag"></i>
-							</div>
+							<label class="form--thumb form--thumb-empty fa fa-shopping-bag d-ib ta-c" for="Imagem">
+								<input type="file" name="Imagem" id="Imagem" accept="image/*">
+							</label>
 						<?php } else { ?>
-							<img width="100%" height="auto" class="img-responsive" src="data:image/jpeg;base64,<?php echo base64_encode($product['imagem']) ?>" />
+							<label class="form--thumb d-ib ta-c" for="Imagem">
+								<img width="100%" height="auto" class="img-responsive" src="data:image/jpeg;base64,<?php echo base64_encode($product['imagem']) ?>" />
+								<input type="file" name="Imagem" id="Imagem" accept="image/*">
+							</label>
 						<?php } ?>
 					<?php } else { ?>
 						<label class="form--thumb form--thumb-empty fa fa-camera d-ib ta-c" for="Imagem">
