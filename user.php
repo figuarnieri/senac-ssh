@@ -100,9 +100,5 @@ $app_user = odbc_exec($db, "
 		</div>
 	</form>
 </main>
-<script>
-	$('[data-passchange]').click(function(e){
-		$(this).closest('.cf').slideUp(400).prev().slideDown(400);
-	});
-</script>
+
 <?php include_once 'includes/footer.php'; ?>
