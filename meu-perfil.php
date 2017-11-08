@@ -10,28 +10,28 @@ $user = odbc_fetch_array($app_user);
 <link rel="stylesheet" href="dist/css/theme/pages/form.min.css">
 
 <main class="main form wrap cf">
-	<div class="pc-col-20">
+	<div class="pc-col-20 t-col-20">
 		<span class="breadcrumb fl-l fa fa-user-circle">Meu Perfil</span>
 		<?php if($_SESSION['userId']!=='1'){ ?>
 			<a href="includes/user_delete.php?id=<?php echo $user['idUsuario']; ?>&delete=true" class="fa fa-trash fl-r ta-c" data-delete-perfil=""></a>
 		<?php } ?>
 		<!-- FALTA COLOCAR O DESLOGAR NO PARAMETRO -->
 	</div>
-	<form class="pc-col-20" action="includes/user_save.php" method="post">
+	<form class="pc-col-20 t-col-20" action="includes/user_save.php" method="post">
 		<input type="hidden" name="id" value="<?php echo $user['idUsuario']?>">
 		<input type="hidden" name="redirect" value="meu-perfil.php">
 		<div class="form--box">
 			<div class="cf va-m">
-				<div class="pc-col-4 ta-r"><label class="form--label" for="Nome">Nome</label></div>
-				<div class="pc-col-16"><input class="form--input" type="text" name="Nome" id="Nome" required="" value="<?php echo $user['nomeUsuario']?>"></div>
+				<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Nome">Nome</label></div>
+				<div class="pc-col-16 t-col-20"><input class="form--input" type="text" name="Nome" id="Nome" required="" value="<?php echo $user['nomeUsuario']?>"></div>
 			</div>
 			<div class="cf va-m">
-				<div class="pc-col-4 ta-r"><label class="form--label" for="Login">Login</label></div>
-				<div class="pc-col-16"><input class="form--input" type="email" name="Login" id="Login" required="" value="<?php echo $user['loginUsuario']?>"></div>
+				<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Login">Login</label></div>
+				<div class="pc-col-16 t-col-20"><input class="form--input" type="email" name="Login" id="Login" required="" value="<?php echo $user['loginUsuario']?>"></div>
 			</div>
 			<div class="cf va-m">
-				<div class="pc-col-4 ta-r"><label class="form--label" for="Perfil">Perfil</label></div>
-				<div class="pc-col-16">
+				<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Perfil">Perfil</label></div>
+				<div class="pc-col-16 t-col-20">
 					<select class="form--input" name="Perfil" id="Perfil">
 						<option value="">Selecione</option>
 						<?php
@@ -46,8 +46,8 @@ $user = odbc_fetch_array($app_user);
 				</div>
 			</div>
 			<div class="cf va-m">
-				<div class="pc-col-4 ta-r"><label class="form--label" for="Status">Status</label></div>
-				<div class="pc-col-16">
+				<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Status">Status</label></div>
+				<div class="pc-col-16 t-col-20">
 					<select class="form--input" type="text" name="Status" id="Status">
 						<?php
 						$item = array(
@@ -62,12 +62,12 @@ $user = odbc_fetch_array($app_user);
 			</div>
 				<div class="d-n">
 					<div class="cf va-m">
-						<div class="pc-col-4 ta-r"><label class="form--label" for="Senha">Nova Senha</label></div>
+						<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Senha">Nova Senha</label></div>
 						<div class="pc-col-6"><input class="form--input" type="password" name="Senha" id="Senha"></div>
 					</div>
 				</div>
 				<div class="cf va-m">
-					<div class="-pc-col-4 pc-col-16">
+					<div class="-pc-col-4 pc-col-16 t-col-20">
 						<a class="button button-small fa fa-key d-ib" href="#" data-passchange>Alterar Senha</a>
 					</div>
 				</div>
@@ -80,4 +80,9 @@ $user = odbc_fetch_array($app_user);
 		</div>
 	</form>
 </main>
+<script>
+	$('[data-passchange]').click(function(e){
+		$(this).closest('.cf').slideUp(400).prev().slideDown(400);
+	});
+</script>
 <?php include_once 'includes/footer.php'; ?>
