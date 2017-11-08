@@ -1,4 +1,6 @@
 <?php
+ini_set('odbc.defaultlrl', 90000000);
+
 $db_host = "figuarnieri.database.windows.net";
 $db_name = "figuarnieri_pi";
 $db_user = "figuarnieri";

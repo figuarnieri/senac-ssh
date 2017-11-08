@@ -31,8 +31,8 @@ $app_user = odbc_exec($db, "
 		<?php } ?>
 		<div class="form--box">
 			<div class="cf va-m">
-				<div class="pc-col-4 ta-r"><label class="form--label" for="Nome">Nome</label></div>
-				<div class="pc-col-16"><input class="form--input" type="text" name="Nome" id="Nome" required="" value="<?php echo $user_edit ? $user['nomeUsuario'] : ''?>"></div>
+				<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Nome">Nome</label></div>
+				<div class="pc-col-16 t-col-20"><input class="form--input" type="text" name="Nome" id="Nome" required="" value="<?php echo $user_edit ? $user['nomeUsuario'] : ''?>"></div>
 			</div>
 			<div class="cf va-m">
 				<div class="pc-col-4 ta-r"><label class="form--label" for="Login">Login</label></div>

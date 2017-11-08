@@ -17,7 +17,7 @@
 			<div class="dashboard--name">Categorias</div>
 			<div class="dashboard--buttons cf d-b">
 				<a href="category_list.php" class="button d-ib fl-l">Listar</a>
-				<a href="category_list.php" class="button d-ib fl-r">Cadastrar</a>
+				<a href="category.php" class="button d-ib fl-r">Cadastrar</a>
 			</div>
 		</div>
 	</section>
@@ -26,8 +26,8 @@
 			<i class="fa fa-shopping-bag"></i>
 			<div class="dashboard--name">Produtos</div>
 			<div class="dashboard--buttons cf d-b">
-				<a class="button d-ib fl-l">Listar</a>
-				<a class="button d-ib fl-r">Cadastrar</a>
+				<a href="product_list.php" class="button d-ib fl-l">Listar</a>
+				<a href="product.php" class="button d-ib fl-r">Cadastrar</a>
 			</div>
 		</div>
 	</section>

@@ -66,7 +66,7 @@
                         <li class="header--item"><a class="d-b header--link fa fa-dashboard" href="./">Dashboard</a></li>
                         <li class="header--item"><a class="d-b header--link fa fa-users" href="user_list.php">Usuários</a></li>
                         <li class="header--item"><a class="d-b header--link fa fa-list" href="category_list.php">Categorias</a></li>
-                        <li class="header--item"><a class="d-b header--link fa fa-shopping-bag" href="#">Produtos</a></li>
+                        <li class="header--item"><a class="d-b header--link fa fa-shopping-bag" href="product_list.php">Produtos</a></li>
                         <li class="header--item-row"></li>
                         <li class="header--item"><a class="d-b header--link fa fa-user" href="meu-perfil.php">Meu Perfil</a></li>
                         <li class="header--item"><a class="d-b header--link fa fa-sign-out" href="includes/logout.php">Logout</a></li>
