@@ -5,7 +5,6 @@ if(isset($_POST['Senha'])) $senha = $_POST['Senha'];
 
 $login_error = array(
 	  '1' => 'Login/senha inválido! Tente novamente.'
-	, '2' => 'Login já cadastrado! Tente outro e-mail.'
 );
 
 if(!empty($login) || !empty($senha)){
@@ -61,16 +60,12 @@ if(!empty($login) || !empty($senha)){
 	<div class="pc-col-9 -pc-col-2">
 		<div class="login--form">
 			<div class="login--tabs">
-				<?php if(isset($_GET['error']) && $_GET['error'] === '2'){ ?>
-					<a class="login--area" data-login="#formLogin">Login</a> ou <a class="login--area login--area-active" data-login="#formCadastro">Cadastro</a>
-				<?php } else { ?>
-					<a class="login--area login--area-active" data-login="#formLogin">Login</a> ou <a class="login--area" data-login="#formCadastro">Cadastro</a>
-				<?php } ?>
+				<a class="login--area login--area-active" data-login="#formLogin">Login</a>
 			</div>
 			<?php if(isset($_GET['error'])) { ?>
 				<div class="login--alert ta-c"><?php echo $login_error[$_GET['error']]; ?></div>
 			<?php } ?>
-			<form class="<?php echo $_GET['error']==='2' ? 'd-n' : 'd-b' ?>" id="formLogin" action="./" method="post">
+			<form id="formLogin" action="./" method="post">
 				<?php if(isset($_GET['redirect_url'])) { ?>
 					<input type="hidden" name="redirect_url" value="<?php echo $_GET['redirect_url']?>">
 				<?php } ?>
@@ -87,30 +82,6 @@ if(!empty($login) || !empty($senha)){
 					</div>
 					<div class="fl-r">
 						<button class="login--button">Acessar</button>
-					</div>
-				</div>
-			</form>
-			<form class="<?php echo $_GET['error']==='2' ? 'd-b' : 'd-n' ?>" id="formCadastro" action="includes/user_save.php" method="post">
-				<label for="Nome" class="login--label d-b">Nome</label>
-				<input class="login--input" type="text" name="Nome" id="Nome" placeholder="Ex.: Fulano da Silva">
-				<label for="Login" class="login--label d-b">Login</label>
-				<input class="login--input" type="email" name="Login" id="Login" placeholder="Ex.: login@email.com">
-				<label for="Senha" class="login--label d-b">Senha</label>
-				<input class="login--input" type="password" name="Senha" id="Senha" value="123">
-				<label for="Perfil" class="login--label d-b">Perfil</label>
-				<select class="login--input" name="Perfil" id="Perfil">
-					<?php
-					$item = array(
-						"A" => "Administrador",
-						"E" => "Editor",
-					);
-					foreach ($item as $key => $value) { ?>
-						<option value="<?php echo $key; ?>" <?php echo $key==='E' ? 'selected' : '' ?> ><?php echo $value; ?></option>
-					<?php } ?>
-				</select>
-				<div class="cf d-b">
-					<div class="fl-r">
-						<button class="login--button">Cadastrar</button>
 					</div>
 				</div>
 			</form>

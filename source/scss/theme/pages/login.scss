@@ -28,7 +28,6 @@
 	}
 	&--area{
 		font-size: 30px;margin-right: 20px;padding-bottom: 5px;cursor: pointer;text-transform: uppercase;
-		&:last-child{margin-left: 20px;}
 		&:not(.login--area-active):hover{color: #bb7268;}
 		&-active{
 			color: #fff;border-bottom: 1px solid #fff;position: relative;
