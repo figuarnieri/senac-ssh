@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="dist/css/theme/pages/dashboard.min.css">
 
 <main class="main dashboard wrap cf">
-	<section class="pc-col-6 pc-col-lr">
+	<section class="pc-col-6 pc-col-lr t-col-20">
 		<div class="dashboard--box ta-c">
 			<i class="fa fa-user-circle"></i>
 			<div class="dashboard--name">Usuários</div>
@@ -11,7 +11,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="pc-col-6 -pc-col-1 pc-col-lr">
+	<section class="pc-col-6 -pc-col-1 pc-col-lr t-col-20">
 		<div class="dashboard--box ta-c">
 			<i class="fa fa-list"></i>
 			<div class="dashboard--name">Categorias</div>
@@ -21,7 +21,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="pc-col-6 -pc-col-1 pc-col-lr">
+	<section class="pc-col-6 -pc-col-1 pc-col-lr t-col-20">
 		<div class="dashboard--box ta-c">
 			<i class="fa fa-shopping-bag"></i>
 			<div class="dashboard--name">Produtos</div>
