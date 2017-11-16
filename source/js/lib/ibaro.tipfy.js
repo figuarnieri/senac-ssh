@@ -46,19 +46,19 @@ class Tipfy {
         , tipSide = tag.dataset.tipfySide||'top'
         , position = {
             right: function(){
-                wrap.setAttribute('style', `left: ${rect.right + left}px;top: ${rect.y + rect.height/2 + top}px;width: ${wrapRect.width}px;`);
+                wrap.setAttribute('style', `left: ${rect.right + left}px;top: ${rect.top + rect.height/2 + top}px;width: ${wrapRect.width}px;`);
                 wrap.children[0].classList.add('tipfy--side-right');
             }
             , left: function(){
-                wrap.setAttribute('style', `left: ${rect.x + left - wrapRect.width}px;top: ${rect.y + rect.height/2 + top}px;width: ${wrapRect.width}px;`);
+                wrap.setAttribute('style', `left: ${rect.left + left - wrapRect.width}px;top: ${rect.top + rect.height/2 + top}px;width: ${wrapRect.width}px;`);
                 wrap.children[0].classList.add('tipfy--side-left');
             }
             , bottom: function(){
-                wrap.setAttribute('style', `left: ${rect.x + left - wrapRect.width/2 + rect.width/2}px;top: ${rect.bottom + top}px;height: ${wrapRect.height}px;width: ${wrapRect.width}px;`);
+                wrap.setAttribute('style', `left: ${rect.left + left - wrapRect.width/2 + rect.width/2}px;top: ${rect.bottom + top}px;height: ${wrapRect.height}px;width: ${wrapRect.width}px;`);
                 wrap.children[0].classList.add('tipfy--side-bottom');
             }
             , top: function(){
-                wrap.setAttribute('style', `left: ${rect.x + left - wrapRect.width/2 + rect.width/2}px;top: ${rect.y - wrapRect.height + top}px;height: ${wrapRect.height}px;width: ${wrapRect.width}px;`);
+                wrap.setAttribute('style', `left: ${rect.left + left - wrapRect.width/2 + rect.width/2}px;top: ${rect.top - wrapRect.height + top}px;height: ${wrapRect.height}px;width: ${wrapRect.width}px;`);
                 wrap.children[0].classList.add('tipfy--side-top');
             }
         }
