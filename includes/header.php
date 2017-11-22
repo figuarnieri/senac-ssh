@@ -49,7 +49,6 @@
     <link rel="stylesheet" href="dist/css/theme/header.min.css">
     <link rel="stylesheet" href="dist/css/theme/footer.min.css">
     <link rel="stylesheet" href="dist/css/theme/extra/keyframes.min.css">
-    <link rel="stylesheet" href="dist/css/theme/extra/responsive.min.css">
     <script src="dist/js/all.js"></script>
 
     <title>Kanino Pet Shop - Sistema Administrador</title>
@@ -84,7 +83,7 @@
                     ?>
                     olá <?php echo odbc_fetch_array($app_user)['nomeUsuario'];?>
                 </div>
-                <form class="fl-r header--search">
+                <form class="fl-r header--search" action="search.php">
                     <input class="d-b" type="search" name="Search" id="Search" placeholder="Buscar produtos">
                     <button class="fa fa-search"></button>
                 </form>

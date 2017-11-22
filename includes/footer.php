@@ -77,10 +77,7 @@
 
 	new Maskfy('[data-mask]');
 	new Tipfy('[data-tipfy]');
-    new Validity('form:not([method="post"])');
 </script>
+<link rel="stylesheet" href="dist/css/theme/extra/responsive.min.css">
 </body>
 </html>
-<?php 
-
-?>

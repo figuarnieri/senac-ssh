@@ -29,7 +29,7 @@ if(!empty($login) || !empty($senha)){
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/login.min.css">
 <main class="wrap cf login">
-	<div class="pc-col-9">
+	<div class="pc-col-9 login--logo">
 		<div class="login--info ta-c">
 			Seja Bem-vindo ao sistema gerenciador de arquivos da loja <strong class="login--info-strong">Kanino Pet Shop</strong>
 			<svg class="login--svg d-b" version="1.1" xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 367 367">
@@ -57,15 +57,12 @@ if(!empty($login) || !empty($senha)){
 			</svg>
 		</div>
 	</div>
-	<div class="pc-col-9 -pc-col-2">
+	<div class="pc-col-9 -pc-col-2 t-col-20 login--content">
 		<div class="login--form">
-			<div class="login--tabs">
-				<a class="login--area login--area-active" data-login="#formLogin">Login</a>
-			</div>
 			<?php if(isset($_GET['error'])) { ?>
 				<div class="login--alert ta-c"><?php echo $login_error[$_GET['error']]; ?></div>
 			<?php } ?>
-			<form id="formLogin" action="./" method="post">
+			<form class="d-b" id="formLogin" action="./" method="post">
 				<?php if(isset($_GET['redirect_url'])) { ?>
 					<input type="hidden" name="redirect_url" value="<?php echo $_GET['redirect_url']?>">
 				<?php } ?>
