@@ -1,5 +1,17 @@
 .login {
   padding-top: 50px;
+  /* &--tabs{color: #905952;font-size: 20px;margin-bottom: 35px;} */
+  /* &--area{
+		font-size: 30px;margin-right: 20px;padding-bottom: 5px;cursor: pointer;text-transform: uppercase;
+		&:last-child{margin-left: 20px;}
+		&:not(.login--area-active):hover{color: #bb7268;}
+		&-active{
+			color: #fff;border-bottom: 1px solid #fff;position: relative;
+			&:before, &:after{content: '';position: absolute;top: 100%;left: 50%;transform: translateX(-50%);border-style: solid;border-color: transparent;}
+			&:before{border-width: 6.5px;border-top-color: #fff;z-index: 1;}
+			&:after{border-width: 5px;border-top-color: #482722;z-index: 2;}
+		}
+	} */
 }
 
 .login:before {
@@ -69,12 +81,6 @@
   cursor: pointer;
 }
 
-.login--tabs {
-  color: #905952;
-  font-size: 20px;
-  margin-bottom: 35px;
-}
-
 .login--form {
   color: #fff;
 }
@@ -90,50 +96,6 @@
 
 .login--form :-ms-input-placeholder {
   color: #774c46;
-}
-
-.login--area {
-  font-size: 30px;
-  margin-right: 20px;
-  padding-bottom: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.login--area:last-child {
-  margin-left: 20px;
-}
-
-.login--area:not(.login--area-active):hover {
-  color: #bb7268;
-}
-
-.login--area-active {
-  color: #fff;
-  border-bottom: 1px solid #fff;
-  position: relative;
-}
-
-.login--area-active:before, .login--area-active:after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-style: solid;
-  border-color: transparent;
-}
-
-.login--area-active:before {
-  border-width: 6.5px;
-  border-top-color: #fff;
-  z-index: 1;
-}
-
-.login--area-active:after {
-  border-width: 5px;
-  border-top-color: #482722;
-  z-index: 2;
 }
 
 .login--alert {
@@ -164,7 +126,7 @@
   background-color: transparent;
   color: #eee;
   font-size: 16px;
-  padding: 8px 0;
+  padding: 8px;
   outline-style: none;
   width: 100%;
   margin-bottom: 40px;

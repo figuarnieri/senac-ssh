@@ -2,64 +2,111 @@
   .wrap {
     width: 96%;
   }
-  .formError {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin-top: 0 !important;
+  .header {
+    height: 100px;
   }
-  .formError .formErrorContent {
+  .header--name {
+    max-width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .header--search {
+    margin-top: 8px;
     max-width: 100%;
   }
-  .formError .formErrorContent {
-    border-style: none;
-    box-shadow: none;
-    border-radius: 0px;
+  .header--menu-active .header--nav {
+    width: 100vw;
+    left: -21px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.65);
   }
-  .formError .formErrorArrow div {
-    box-shadow: none;
+  .main {
+    padding-top: 120px;
   }
-  .formError .formErrorArrow .line8 {
-    border-left-style: none;
-    border-right-style: none;
+  .login {
+    padding-top: 60px;
   }
-  .formError .formErrorArrow .line7 {
-    border-left-style: none;
-    border-right-style: none;
+  .login:before {
+    width: 100vw;
+    height: 40px;
   }
-  .formError .formErrorArrow .line6 {
-    border-left-style: none;
-    border-right-style: none;
-  }
-  .formError .formErrorArrow .line5 {
-    background-color: #ee0101;
-  }
-  .formError .formErrorArrow .line4 {
-    background-color: #ee0101;
-  }
-  .formError .formErrorArrow .line3 {
-    background-color: #ee0101;
-  }
-  .error-box .error-cotent {
-    position: relative;
-    height: calc(100% - 35px);
-    left: 1%;
+  .login:after {
+    content: 'Kanino Pet Shop';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
     top: 5px;
-    width: 98%;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
   }
-  .yiiPager {
-    margin-top: 20px;
+  .login--logo {
+    order: 1;
   }
-  .yiiPager a {
-    font-size: 18px;
+  .login--content {
+    margin-bottom: 30px;
+  }
+  .login--button {
+    margin-top: 40px;
+  }
+  .login--info {
+    font-size: 25px;
+  }
+  .login--input {
+    color: #000;
+  }
+  .login--input:focus {
+    border-bottom-color: #000;
+    box-shadow: 0 0 10px #ccc;
+  }
+  .login--svg {
+    width: 100px;
+    margin: 40px auto 15px;
+  }
+  .list--input {
+    border-style: none;
+  }
+  .list--icons {
+    background-color: #482722;
+    margin-bottom: 40px;
+  }
+  .list--icons .fa {
+    color: #fff;
+  }
+  .list--table .list--icons {
+    border-bottom: 4px solid #7d6662;
+  }
+  .list--pagelist, .list--pagebox, .list--input {
+    width: 100%;
+    max-width: 100%;
+  }
+  .breadcrumb {
+    float: none;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .button-breadcrumb {
+    margin-left: 0;
+    display: block;
+    text-align: center;
+  }
+  .button-breadcrumb-wrap {
+    float: none;
+  }
+  [t-pseudo-before]:before {
+    content: attr(t-pseudo-before);
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    width: 90%;
   }
 }
 
 @media (max-width: 320px) {
   .wrap {
     width: 90%;
-  }
-  .error-box .error-title {
-    font-size: 12px;
   }
 }
