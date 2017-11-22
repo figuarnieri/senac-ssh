@@ -1,5 +1,5 @@
 @import "../lib/mixins";
-body{font-family: 'Raleway', sans-serif;font-size: 16px;color: #482722;}
+body{font-family: 'Raleway', sans-serif;font-size: 16px;color: #482722;background-color: #fff;}
 .wrap{max-width: 1000px;}
 .main{padding-top: 70px;padding-bottom: 50px;}
 .button{
@@ -7,4 +7,4 @@ body{font-family: 'Raleway', sans-serif;font-size: 16px;color: #482722;}
 	&:hover{background-color: lighten(#482722, 15%);}
 	&-breadcrumb{margin-left: 60px;}
 }
-.breadcrumb{font-size: 20px;font-size: 20px;}
+.breadcrumb{font-size: 20px;}

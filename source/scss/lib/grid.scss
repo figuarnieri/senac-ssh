@@ -9,7 +9,7 @@ $grid-width: 5%;
 .col-lr, .col-rl{padding-left: 0;padding-right: 0;}
 
 /* MOBILE */
-$device-class: (mobile: m, mobile-landscape: ml, tablet: t, tablet-landscape: tl, pc: pc);
+$device-class: (pc: pc, tablet-landscape: tl, tablet: t, mobile-landscape: ml, mobile: m);
 $mobile-size: (25: 25%,33: 33.3333%,50: 50%,75: 75%,80: 80%,100: 100%);
 
 @each $key, $value in $device-class {
