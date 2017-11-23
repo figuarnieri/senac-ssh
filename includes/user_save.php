@@ -13,9 +13,9 @@ if(empty($user_id)){
 	$user_sql_test = odbc_prepare($db, "
 		SELECT loginUsuario, senhaUsuario
 		FROM Usuario
-		WHERE loginUsuario = ? AND senhaUsuario = ?
+		WHERE loginUsuario = ?
 	");
-	if(odbc_execute($user_sql_test, array($user_login, $user_senha))){
+	if(odbc_execute($user_sql_test, array($user_login))){
 
 		if(!odbc_fetch_row($user_sql_test)){
 			$user_sql = odbc_prepare($db, "
@@ -24,7 +24,7 @@ if(empty($user_id)){
 			);
 			odbc_execute($user_sql, array($user_login, $user_senha, $user_nome, $user_tipo, $user_ativo));
 		} else {
-			header("Location: ../?error=2");
+			header("Location: ../user.php?error=Login já existente! FAvor escolher um e-mail diferente.");
 			exit();
 		}
 	}
@@ -49,9 +49,6 @@ if(empty($user_id)){
 	}
 
 }
-if(empty($user_id)){
-	header(empty($app_redirect) ? "Location: ../" : "Location: ../$app_redirect");
-} else {
-	header(empty($app_redirect) ? "Location: ../user_list.php" : "Location: ../$app_redirect");
-}
+
+header("Location: ../user_list.php");
 ?>

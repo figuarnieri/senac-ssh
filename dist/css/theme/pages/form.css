@@ -22,6 +22,14 @@
   color: #666;
 }
 
+.form .button-small:hover {
+  background-color: #b3b3b3;
+}
+
+.form .button-back {
+  margin-right: 10px;
+}
+
 .form--box {
   padding-top: 20px;
 }
@@ -44,12 +52,17 @@
   padding: 6px 5px;
 }
 
+.form--input-last {
+  margin-bottom: 20px;
+}
+
 .form--thumb {
   width: 140px;
   height: 140px;
   border-radius: 3px;
   position: relative;
   cursor: pointer;
+  margin-bottom: 30px;
 }
 
 .form--thumb-empty {
@@ -75,4 +88,10 @@
   overflow: hidden;
   opacity: 0;
   position: absolute;
+}
+
+.form textarea {
+  height: 150px;
+  line-height: normal;
+  font-family: Arial;
 }

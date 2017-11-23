@@ -9,13 +9,15 @@ $user = odbc_fetch_array($app_user);
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/form.min.css">
 
-<main class="main form wrap cf">
-	<div class="pc-col-20 t-col-20">
+<main class="main form wrap cf d-b">
+	<div class="pc-col-20 t-col-20 cf d-b">
 		<span class="breadcrumb fl-l fa fa-user-circle">Meu Perfil</span>
-		<?php if($_SESSION['userId']!=='1'){ ?>
-			<a href="includes/user_delete.php?id=<?php echo $user['idUsuario']; ?>&delete=true" class="fa fa-trash fl-r ta-c" data-delete-perfil=""></a>
-		<?php } ?>
-		<!-- FALTA COLOCAR O DESLOGAR NO PARAMETRO -->
+		<div class="fl-r cf va-m">
+			<a href="javascript: history.back();" class="button button-small button-back">Voltar</a>
+			<?php if($_SESSION['userId']!=='1'){ ?>
+				<a href="includes/user_delete.php?id=<?php echo $user['idUsuario']; ?>&delete=true" class="fa fa-trash ta-c" data-delete-perfil></a>
+			<?php } ?>
+		</div>
 	</div>
 	<form class="pc-col-20 t-col-20" action="includes/user_save.php" method="post">
 		<input type="hidden" name="id" value="<?php echo $user['idUsuario']?>">
@@ -60,17 +62,17 @@ $user = odbc_fetch_array($app_user);
 					</select>
 				</div>
 			</div>
-				<div class="d-n">
-					<div class="cf va-m">
-						<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Senha">Nova Senha</label></div>
-						<div class="pc-col-6"><input class="form--input" type="password" name="Senha" id="Senha"></div>
-					</div>
-				</div>
+			<div class="d-n">
 				<div class="cf va-m">
-					<div class="-pc-col-4 pc-col-16 t-col-20">
-						<a class="button button-small fa fa-key d-ib" href="#" data-passchange>Alterar Senha</a>
-					</div>
+					<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Senha">Nova Senha</label></div>
+					<div class="pc-col-6"><input class="form--input" type="password" name="Senha" id="Senha"></div>
 				</div>
+			</div>
+			<div class="cf va-m">
+				<div class="-pc-col-4 pc-col-16 t-col-20">
+					<a class="button button-small fa fa-key d-ib" href="#" data-passchange>Alterar Senha</a>
+				</div>
+			</div>
 
 			<div class="cf va-m">
 				<div class="pc-col-20 ta-r">

@@ -5,20 +5,28 @@
 	}
 	.button{
 		font-size: 20px;
-		&-small{font-size: 14px;background-color: #ccc;color: #666;}
+		&-small{
+			font-size: 14px;background-color: #ccc;color: #666;
+			&:hover{background-color: darken(#ccc, 10%);}
+		}
+		&-back{margin-right: 10px;}
 	}
 	&--box{
 		padding-top: 20px;
 		> .cf {margin-bottom: 20px;}
 	}
 	&--label{color: #999;}
-	&--input{color: #482722;border-style: none;font-size: 14px;border-bottom: 1px solid #482722;width: 100%;outline-style: none;padding: 6px 5px;}
+	&--input{
+		color: #482722;border-style: none;font-size: 14px;border-bottom: 1px solid #482722;width: 100%;outline-style: none;padding: 6px 5px;
+		&-last{margin-bottom: 20px;}
+	}
 	&--thumb{
-		width: 140px;height: 140px;border-radius: 3px;position: relative;cursor: pointer;
+		width: 140px;height: 140px;border-radius: 3px;position: relative;cursor: pointer;margin-bottom: 30px;
 		&-empty{
 			background-color: #ddd;border: 1px dashed #999;line-height: 140px;font-size: 70px;color: #aaa;
 			&:after{content: 'upload de foto';font-size: 12px;line-height: 10px;display: block;transform: translateY(-30px);color: #999;}
 		}
 		input{width: 1px;height: 1px;overflow: hidden;opacity: 0;position: absolute;}
 	}
+	textarea{height: 150px;line-height: normal;font-family: Arial;}
 }

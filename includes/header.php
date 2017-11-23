@@ -57,36 +57,37 @@
     <noscript class="noscript ta-c"></noscript>
     <?php if($app_login){ ?>
         <div class="header">
-            <div class="wrap">
-                <nav class="header--menu d-ib va-b" data-menu>
-                    <input class="header--check" type="checkbox" id="Menu">
-                    <label for="Menu" class="header--icon fa fa-navicon d-ib va-m ta-c"></label>
-                    <ul class="header--nav d-n">
-                        <li class="header--item"><a class="d-b header--link fa fa-dashboard" href="./">Dashboard</a></li>
-                        <li class="header--item"><a class="d-b header--link fa fa-users" href="user_list.php">Usuários</a></li>
-                        <li class="header--item"><a class="d-b header--link fa fa-list" href="category_list.php">Categorias</a></li>
-                        <li class="header--item"><a class="d-b header--link fa fa-shopping-bag" href="product_list.php">Produtos</a></li>
-                        <li class="header--item-row"></li>
-                        <li class="header--item"><a class="d-b header--link fa fa-user" href="meu-perfil.php">Meu Perfil</a></li>
-                        <li class="header--item"><a class="d-b header--link fa fa-sign-out" href="includes/logout.php">Logout</a></li>
-                    </ul>
-                </nav>
-                <div class="header--logo d-ib va-m">
-                    <img src="dist/img/logo.svg" alt="Logotipo Kanino">
-                </div>
-                <div class="header--name d-ib va-m">
-                    <?php
-                    $app_user = odbc_exec($db, "
-                        SELECT nomeUsuario, idUsuario
-                        FROM Usuario
-                        WHERE idUsuario = ".$_SESSION['userId']);
-                    ?>
-                    olá <?php echo odbc_fetch_array($app_user)['nomeUsuario'];?>
-                </div>
-                <form class="fl-r header--search" action="search.php">
-                    <input class="d-b" type="search" name="Search" id="Search" placeholder="Buscar produtos">
-                    <button class="fa fa-search"></button>
-                </form>
+            <div class="d-n t-d-ib va-m">
+                <button type="button" class="fa fa-navicon" aria-hidden="true" data-nav></button>
             </div>
+            <div class="header--logo d-ib va-m">
+                <img src="dist/img/logo.svg" alt="Logotipo Kanino">
+            </div>
+            <div class="header--name d-ib va-m">
+                <?php
+                $app_user = odbc_exec($db, "
+                    SELECT nomeUsuario, idUsuario
+                    FROM Usuario
+                    WHERE idUsuario = ".$_SESSION['userId']);
+                ?>
+                olá <?php echo odbc_fetch_array($app_user)['nomeUsuario'];?>
+            </div>
+            <form class="fl-r header--search" action="search.php">
+                <input class="d-b" type="search" name="Search" id="Search" placeholder="Buscar produtos">
+                <button class="fa fa-search"></button>
+            </form>
         </div>
+        <div class="cf">
+            <nav class="header--menu pc-col-4 col-lr">
+                <button type="button" class="fa fa-times" aria-hidden="true" data-nav></button>
+                <ul class="header--nav">
+                    <li class="header--item"><a class="d-b header--link fa fa-dashboard" href="./">Dashboard</a></li>
+                    <li class="header--item"><a class="d-b header--link fa fa-users" href="user_list.php">Usuários</a></li>
+                    <li class="header--item"><a class="d-b header--link fa fa-table" href="category_list.php">Categorias</a></li>
+                    <li class="header--item"><a class="d-b header--link fa fa-shopping-bag" href="product_list.php">Produtos</a></li>
+                    <li class="header--item-row"></li>
+                    <li class="header--item"><a class="d-b header--link fa fa-user-circle" href="meu-perfil.php">Meu Perfil</a></li>
+                    <li class="header--item"><a class="d-b header--link fa fa-sign-out" href="includes/logout.php">Logout</a></li>
+                </ul>
+            </nav>
     <?php } ?>

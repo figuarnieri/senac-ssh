@@ -1,13 +1,8 @@
 .header {
   background-color: #fff;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 50px;
   padding: 5px;
   box-shadow: 0 0 20px #666;
-  z-index: 2;
+  z-index: 1;
 }
 
 .header--icon {
@@ -77,60 +72,11 @@
   color: #7c433b;
 }
 
-.header--check {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
-}
-
-.header--check:checked ~ .header--nav {
-  display: inline-block;
-}
-
 .header--menu {
-  position: relative;
-}
-
-.header--menu-active:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 160px;
-  height: 50px;
-  z-index: 1;
-}
-
-.header--menu-active .header--nav {
-  display: inline-block;
-}
-
-.header--menu-active .header--icon {
-  background-color: #482722;
-  color: #fff;
-}
-
-.header--nav {
-  position: absolute;
-  left: 0;
-  top: 100%;
   background-color: #fff;
-  z-index: 1;
-  box-shadow: 0 0 10px #ccc;
-  transform: translateY(11px);
-}
-
-.header--nav:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: -5px;
-  height: 20px;
-  background-color: #fff;
-  width: 100%;
-  z-index: 1;
+  z-index: 3;
+  box-shadow: 0 14px 20px #666;
+  min-height: 100vh;
 }
 
 .header--item-row {

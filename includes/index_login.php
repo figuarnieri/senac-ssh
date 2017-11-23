@@ -3,7 +3,7 @@
 <main class="main dashboard wrap cf">
 	<section class="pc-col-6 pc-col-lr t-col-20">
 		<div class="dashboard--box ta-c">
-			<i class="fa fa-user-circle"></i>
+			<i class="fa fa-users"></i>
 			<div class="dashboard--name">Usuários</div>
 			<div class="dashboard--buttons cf d-b">
 				<a href="user_list.php" class="button d-ib fl-l">Listar</a>
@@ -13,7 +13,7 @@
 	</section>
 	<section class="pc-col-6 -pc-col-1 pc-col-lr t-col-20">
 		<div class="dashboard--box ta-c">
-			<i class="fa fa-list"></i>
+			<i class="fa fa-table"></i>
 			<div class="dashboard--name">Categorias</div>
 			<div class="dashboard--buttons cf d-b">
 				<a href="category_list.php" class="button d-ib fl-l">Listar</a>

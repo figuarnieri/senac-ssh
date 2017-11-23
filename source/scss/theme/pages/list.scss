@@ -1,9 +1,13 @@
 //@import "../lib/mixins";
 .list{
-	&--content{border: 1px solid #ccc;border-radius: 4px;margin-top: 30px;}
+	&--content{
+		border: 1px solid #ccc;border-radius: 4px;margin-top: 30px;
+		&-empty{font-size: 26px;padding: 20px;}
+	}
 	&--pages{padding: 7px;}
 	&--pagelist{background-color: #eee;border-radius: 4px;padding: 2px;display: inline-flex;}
 	&--pagebox{
+		width: 290px;
 		.fa{width: 10px;}
 		+ .list--pagebox{margin-left: 2px;}
 	}
@@ -40,7 +44,8 @@
 			}
 		}
 	}
-	&--input{padding: 8px 12px;border: 1px solid #482722;border-radius: 4px;}
+	&--error{margin-top: 30px;margin-bottom: -20px;}
+	&--input{padding: 8px 12px;border: 1px solid #ddd;border-radius: 4px;box-shadow: 0 0 0 3px #eee;font-size: 18px;width: 100%;}
 	&--img{
 		width: 50px;height: 50px;overflow: hidden;border: 1px solid #aaa;border-radius: 3px;overflow: hidden;
 		.fa-shopping-bag{

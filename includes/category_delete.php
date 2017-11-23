@@ -13,9 +13,7 @@ $product = odbc_exec($db, "
 );
 
 if(odbc_fetch_row($product)){
-	header('Location: ../category_list.php?error=1');
-	exit();
-	print_r(array_values($num));
+	header('Location: ../product_list.php?&category_id='.$category_id);
 } else {
 
 }

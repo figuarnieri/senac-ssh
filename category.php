@@ -7,17 +7,20 @@ if($category_edit){
 		FROM Categoria
 		WHERE idCategoria = '.$_GET['edit']);
 		$user = odbc_fetch_array($category_sql);
-		print_r($user);
+		//print_r($user);
 }
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/form.min.css">
 
-<main class="main form wrap cf">
-	<div class="pc-col-20 t-col-20">
-		<span class="breadcrumb fl-l fa fa-list">Categoria / <?php echo $category_edit ? 'Editar' : 'Cadastro' ?></span>
-		<?php if($category_edit){ ?>
-			<a href="includes/category_delete.php?id=<?php echo $_GET['edit']; ?>" class="fa fa-trash fl-r ta-c"></a>
-		<?php } ?>
+<main class="main form wrap cf d-b">
+	<div class="pc-col-20 t-col-20 cf d-b">
+		<span class="breadcrumb fl-l fa fa-table">Categoria / <?php echo $category_edit ? 'Editar' : 'Cadastrar' ?></span>
+		<div class="fl-r cf va-m">
+			<a href="javascript: history.back();" class="button button-small button-back">Voltar</a>
+			<?php if($category_edit){ ?>
+				<a href="includes/category_delete.php?id=<?php echo $_GET['edit']; ?>" class="fa fa-trash ta-c"></a>
+			<?php } ?>
+		</div>
 	</div>
 	<form class="pc-col-20 t-col-20" action="includes/category_save.php" method="post">
 		<?php if($category_edit){ ?>
@@ -25,12 +28,12 @@ if($category_edit){
 		<?php } ?>
 		<div class="form--box">
 			<div class="cf va-m">
-				<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Nome">Nome</label></div>
-				<div class="pc-col-16 t-col-20"><input class="form--input" type="text" name="Nome" id="Nome" required="" value="<?php echo $category_edit ? utf8_encode($user['nomeCategoria']) : ''?>"></div>
+				<div class="pc-col-3 ta-r t-col-20 t-ta-l"><label class="form--label" for="Nome">Nome</label></div>
+				<div class="pc-col-17 t-col-20"><input class="form--input" type="text" name="Nome" id="Nome" required="" value="<?php echo $category_edit ? utf8_encode($user['nomeCategoria']) : ''?>" maxlength="50"></div>
 			</div>
 			<div class="cf va-m">
-				<div class="pc-col-4 ta-r t-col-20 t-ta-l"><label class="form--label" for="Descricao">Descrição</label></div>
-				<div class="pc-col-16 t-col-20"><input class="form--input" type="text" name="Descricao" id="Descricao" value="<?php echo $category_edit ? utf8_encode($user['descCategoria']) : ''?>"></div>
+				<div class="pc-col-3 ta-r t-col-20 t-ta-l"><label class="form--label" for="Descricao">Descrição</label></div>
+				<div class="pc-col-17 t-col-20"><input class="form--input" type="text" name="Descricao" id="Descricao" value="<?php echo $category_edit ? utf8_encode($user['descCategoria']) : ''?>" maxlength="100"></div>
 			</div>
 			
 			<div class="cf va-m">
