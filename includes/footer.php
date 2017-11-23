@@ -74,6 +74,9 @@
 	setTimeout(() => {
 		$('.login--alert').slideUp(600);
 	}, 2000);
+	$('[data-file]').on('change', function(e){
+		URL.createObjectURL(this.value);
+	})
 
 	new Maskfy('[data-mask]');
 	new Tipfy('[data-tipfy]');
