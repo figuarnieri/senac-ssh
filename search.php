@@ -1,31 +1,26 @@
-<?php include_once 'includes/header.php'; ?>
+<?php include_once 'includes/header.php';
+
+$search = $_GET['Search'];
+$product_sql = odbc_prepare($db, "
+	SELECT idProduto, nomeProduto, precProduto, ativoProduto, qtdMinEstoque, imagem
+	FROM Produto
+	WHERE nomeProduto LIKE ?");
+
+?>
 <link rel="stylesheet" href="dist/css/theme/pages/list.min.css">
 
 <main class="main list wrap cf">
 	<div class="pc-col-20">
-		<span class="breadcrumb fl-l fa fa-search">Busca / Listagem</span>
+		<span class="breadcrumb fl-l fa fa-search">Busca / <strong><?php echo $search?></strong></span>
+		<div class="fl-r"><?php if(odbc_execute($product_sql, array('%'.$search.'%'))){ echo 'Resultados: '.odbc_num_rows($product_sql); }?></div>
 	</div>
-	<?php 
-
-		$search = $_GET['Search'];
-
-		print_r($search);
-
-
-	?>
 
 	<div class="pc-col-20">
 		<div class="list--content">
 			<div class="list--pages ta-r">
-				<ul class="list--pagelist">
-					<li class="list--pagebox"><a href="#" class="list--pagelink d-b"><i class="fa fa-chevron-left"></i></a></li>
-					<li class="list--pagebox"><a href="#" class="list--pagelink d-b">1</a></li>
-					<li class="list--pagebox"><a href="#" class="list--pagelink d-b">2</a></li>
-					<li class="list--pagebox"><a href="#" class="list--pagelink d-b">3</a></li>
-					<li class="list--pagebox"><a href="#" class="list--pagelink d-b">4</a></li>
-					<li class="list--pagebox"><a href="#" class="list--pagelink d-b">5</a></li>
-					<li class="list--pagebox"><a href="#" class="list--pagelink d-b"><i class="fa fa-chevron-right"></i></a></li>
-				</ul>
+				<div class="list--pagelist">
+					<div class="list--pagebox"><input type="search" class="list--input d-b" placeholder="Filtrar Listagem"></div>
+				</div>
 			</div>
 			<table class="list--table" cellpadding="0" cellspacing="0">
 				<tr>
@@ -40,14 +35,10 @@
 					<th class="ta-c" width="150">Ações</th>
 				</tr>
 			<?php
-			$product_sql = odbc_prepare($db, "
-				SELECT idProduto, nomeProduto, precProduto, ativoProduto, qtdMinEstoque, imagem
-				FROM Produto
-				WHERE nomeProduto LIKE ?");
-
-			if(odbc_execute($product_sql, array($search))){
-				odbc_fetch_array($product_sql);
-				while($product = odbc_fetch_array($product_sql)){ ?>
+			
+			if(odbc_execute($product_sql, array('%'.$search.'%'))){
+				while($product = odbc_fetch_array($product_sql)){
+					?>
 					<tr>
 						<td class="ta-c">
 							<input type="checkbox" name="multicheck[]" id="id<?php echo $product['idProduto']?>" value="<?php echo $product['idProduto']?>">
