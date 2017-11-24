@@ -10,5 +10,6 @@ $product_sql = odbc_prepare($db, "
 );
 odbc_execute($product_sql, array($product_id));
 
-header('Location: ../product_list.php');
+header("Location: ../product_list.php?delete=1");
+exit();
 ?>

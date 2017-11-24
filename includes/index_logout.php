@@ -74,23 +74,8 @@ if(!empty($login) || !empty($senha)){
 					<i class="fa fa-eye d-n" data-showpass></i>
 				</div>
 				<div class="cf d-b">
-					<div class="fl-l">
-						<a class="login--passlost" data-login="#formLostPassword">Esqueci minha senha</a>
-					</div>
 					<div class="fl-r">
 						<button class="login--button">Acessar</button>
-					</div>
-				</div>
-			</form>
-			<form class="d-n" id="formLostPassword" action="./" method="post">
-				<label for="Login" class="login--label d-b">E-mail Cadastrado</label>
-				<input class="login--input" type="text" name="Login" id="Login" placeholder="Ex.: login@email.com" value="">
-				<div class="cf d-b">
-					<div class="fl-l">
-						<a class="login--passlost" data-login="#formLogin">Fazer login</a>
-					</div>
-					<div class="fl-r">
-						<button class="login--button">Resgatar</button>
 					</div>
 				</div>
 			</form>

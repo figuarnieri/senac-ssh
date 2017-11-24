@@ -12,6 +12,8 @@ if(empty($category_id)){
 		VALUES(?, ?)"
 	);
 	odbc_execute($category_sql, array("$category_nome", "$category_descript"));
+	header("Location: ../category_list.php?save=1");
+	exit();
 
 } else {
 
@@ -21,7 +23,7 @@ if(empty($category_id)){
 		WHERE idCategoria = ?"
 	);
 	odbc_execute($category_sql, array($category_id));
-
+	header("Location: ../category.php?edit=$category_id&save=1");
+	exit();
 }
-header('Location: ../category_list.php');
 ?>

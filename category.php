@@ -11,6 +11,7 @@ if($category_edit){
 }
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/form.min.css">
+<link rel="stylesheet" href="dist/css/theme/pages/login.min.css">
 
 <main class="main form wrap cf d-b">
 	<div class="pc-col-20 t-col-20 cf d-b">
@@ -27,6 +28,13 @@ if($category_edit){
 			<input type="hidden" name="id" value="<?php echo $user['idCategoria']?>">
 		<?php } ?>
 		<div class="form--box">
+			<?php if(isset($_GET['save'])){ ?>
+				<div class="pc-col-20 t-col-20">
+					<div class="cf va-m list--error">
+						<div class="pc-col-17 -pc-col-3"><div class="login--alert login--alert-success ta-c">Informações atualizadas com sucesso!</div></div>
+					</div>
+				</div>
+			<?php } ?>
 			<div class="cf va-m">
 				<div class="pc-col-3 ta-r t-col-20 t-ta-l"><label class="form--label" for="Nome">Nome</label></div>
 				<div class="pc-col-17 t-col-20"><input class="form--input" type="text" name="Nome" id="Nome" required="" value="<?php echo $category_edit ? utf8_encode($user['nomeCategoria']) : ''?>" maxlength="50"></div>

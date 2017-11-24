@@ -79,6 +79,14 @@
   min-height: 100vh;
 }
 
+.header--menu .fa-times {
+  display: none;
+}
+
+.header--menu .fa-sign-out:hover {
+  background-color: #ff654e;
+}
+
 .header--item-row {
   border-bottom: 1px solid #eee;
 }

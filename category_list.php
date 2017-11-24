@@ -15,7 +15,21 @@ $category_sql = odbc_exec($db, '
 	<?php if(isset($_GET['error'])){ ?>
 		<div class="pc-col-20 t-col-20">
 			<div class="cf va-m list--error">
-				<div class="pc-col-16 -pc-col-2"><div class="login--alert ta-c"><?php echo $_GET['error']; ?></div></div>
+				<div class="pc-col-20 t-col-20"><div class="login--alert ta-c"><?php echo $_GET['error']; ?></div></div>
+			</div>
+		</div>
+	<?php } ?>
+	<?php if(isset($_GET['delete'])){ ?>
+		<div class="pc-col-20 t-col-20">
+			<div class="cf va-m list--error">
+				<div class="pc-col-20 t-col-20"><div class="login--alert ta-c">Item deletado com sucesso</div></div>
+			</div>
+		</div>
+	<?php } ?>
+	<?php if(isset($_GET['save'])){ ?>
+		<div class="pc-col-20 t-col-20">
+			<div class="cf va-m list--error">
+				<div class="pc-col-20 t-col-20"><div class="login--alert login--alert-success ta-c">Categoria cadastrada com sucesso!</div></div>
 			</div>
 		</div>
 	<?php } ?>
@@ -53,8 +67,8 @@ $category_sql = odbc_exec($db, '
 						</td>
 						<td t-pseudo-before="Categoria: " class="t-d-b"><?php echo utf8_encode($category['nomeCategoria'])?></td>
 						<td class="ta-c t-d-b list--icons">
-							<a class="fa fa-pencil d-ib" href="category.php?edit=<?php echo $category['idCategoria']?>"></a>
-							<a class="fa fa-trash d-ib" href="includes/category_delete.php?id=<?php echo $category['idCategoria']?>"></a>
+							<a class="fa fa-pencil d-ib" href="category.php?edit=<?php echo $category['idCategoria']?>" data-tipfy="Editar"></a>
+							<a class="fa fa-trash d-ib" href="includes/category_delete.php?id=<?php echo $category['idCategoria']?>" data-tipfy="Deletar"></a>
 						</td>
 					</tr>
 				<?php } ?>

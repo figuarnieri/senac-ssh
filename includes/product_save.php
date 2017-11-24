@@ -24,6 +24,8 @@ if(empty($product_id)){
 		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)"
 	);
 	odbc_execute($product_sql, array($user_id, $product_nome, $product_descricao, $product_estoque, $product_preco, $product_desconto, $product_categoria, $product_status, $product_imagem));
+	header("Location: ../product_list.php?save=1");
+	exit();
 } else {
 
 	if($product_imagem_file['size']){
@@ -47,8 +49,8 @@ if(empty($product_id)){
 		);
 		odbc_execute($product_sql, array($user_id, $product_nome, $product_descricao, $product_estoque, $product_preco, $product_desconto, $product_categoria, $product_status, $product_id));
 	}
+	header("Location: ../product.php?edit=$product_id&save=1");
+	exit();
 
 }
-
-header("Location: ../product_list.php");
 ?>

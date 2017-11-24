@@ -23,8 +23,10 @@ if(empty($user_id)){
 				VALUES(?, ?, ?, ?, ?)"
 			);
 			odbc_execute($user_sql, array($user_login, $user_senha, $user_nome, $user_tipo, $user_ativo));
+			header("Location: ../user_list.php?save=1");
+			exit();
 		} else {
-			header("Location: ../user.php?error=Login já existente! FAvor escolher um e-mail diferente.");
+			header("Location: ../user.php?error=Login já existente! Favor escolher um e-mail diferente.");
 			exit();
 		}
 	}
@@ -47,8 +49,8 @@ if(empty($user_id)){
 		);
 		odbc_execute($user_sql_senha, array($user_id));
 	}
+	header("Location: ../user.php?edit=$user_id&save=1");
+	exit();
 
 }
-
-header("Location: ../user_list.php");
 ?>

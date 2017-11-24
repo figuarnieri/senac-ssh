@@ -13,15 +13,12 @@ $product = odbc_exec($db, "
 );
 
 if(odbc_fetch_row($product)){
-	header('Location: ../product_list.php?&category_id='.$category_id);
+	header("Location: ../product_list.php?&category_error=$category_id");
 } else {
-
+	header("Location: ../category_list.php?delete=1");
 }
-
-exit();
-
 
 odbc_execute($category_sql, array($category_id));
 
-header('Location: ../category_list.php');
+exit();
 ?>

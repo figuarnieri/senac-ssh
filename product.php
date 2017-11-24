@@ -35,7 +35,14 @@ $category_sql = odbc_exec($db, '
 		<div class="form--box">
 			<?php if(isset($_GET['error'])) { ?>
 				<div class="cf va-m">
-					<div class="pc-col-16 -pc-col-4"><div class="login--alert ta-c"><?php echo $_GET['error']; ?></div></div>
+					<div class="pc-col-17 -pc-col-3"><div class="login--alert ta-c"><?php echo $_GET['error']; ?></div></div>
+				</div>
+			<?php } ?>
+			<?php if(isset($_GET['save'])){ ?>
+				<div class="pc-col-20 t-col-20">
+					<div class="cf va-m list--save">
+						<div class="pc-col-17 -pc-col-3"><div class="login--alert login--alert-success ta-c">Informações atualizadas com sucesso!</div></div>
+					</div>
 				</div>
 			<?php } ?>
 			<div class="cf va-m">

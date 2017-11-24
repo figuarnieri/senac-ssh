@@ -1,11 +1,10 @@
 <?php
 include_once 'includes/header.php';
-$categoryDelete = isset($_GET['category_id']) && isset($_GET['products']);
+$categoryDelete = isset($_GET['category_error']) ? $_GET['category_error'] : false;
 if($categoryDelete){
-	$categoryId = $_GET['category_id'];
-	$category = utf8_encode( odbc_fetch_array( odbc_exec($db, "SELECT nomeCategoria FROM Categoria WHERE idCategoria=$categoryId") )['nomeCategoria'] );
-	$error = "Para deleter a categoria <strong>$category</strong>, remova os produtos abaixo desta categoria.";
-	$sql_where = "WHERE idCategoria=$categoryId";
+	$category = utf8_encode( odbc_fetch_array( odbc_exec($db, "SELECT nomeCategoria FROM Categoria WHERE idCategoria=$categoryDelete") )['nomeCategoria'] );
+	$error = "";
+	$sql_where = "WHERE idCategoria=$categoryDelete";
 } else {
 	$sql_where = 'ORDER BY idProduto DESC';
 }
@@ -18,14 +17,44 @@ $product_sql = odbc_exec($db, '
 <link rel="stylesheet" href="dist/css/theme/pages/login.min.css">
 
 <main class="main list wrap">
-	<div class="pc-col-20 t-col-20 cf va-m">
-		<span class="breadcrumb fa fa-users">Produto / Listagem</span><span class="button-breadcrumb-wrap"><a href="product.php" class="button button-breadcrumb">Cadastrar</a></span>
-	</div>
 	<?php if($categoryDelete){ ?>
-		<div class="pc-col-20 list--error">
-			<div class="pc-col-16 -pc-col-2"><div class="login--alert login--alert-fixed ta-c"><?php echo $error; ?></div></div>
+		<div class="pc-col-20 t-col-20 cf va-m">
+			<span class="breadcrumb fa fa-users">Categoria / Listagem / <?php echo $category; ?></span><span class="button-breadcrumb-wrap"><a href="category_list.php" class="button button-breadcrumb">voltar</a></span>
+		</div>
+	<?php } else { ?>
+		<div class="pc-col-20 t-col-20 cf va-m">
+			<span class="breadcrumb fa fa-users">Produto / Listagem</span><span class="button-breadcrumb-wrap"><a href="product.php" class="button button-breadcrumb">Cadastrar</a></span>
 		</div>
 	<?php } ?>
+
+	<?php if($categoryDelete){ ?>
+		<div class="pc-col-20 list--error">
+			<div class="pc-col-20 t-col-20"><div class="login--alert login--alert-fixed ta-c">Para deleter a categoria <strong><?php echo $category; ?></strong>, remova os produtos abaixo desta categoria.</div></div>
+		</div>
+	<?php } ?>
+
+	<?php if(isset($_GET['error'])){ ?>
+		<div class="pc-col-20 t-col-20">
+			<div class="cf va-m list--error">
+				<div class="pc-col-20 t-col-20"><div class="login--alert ta-c"><?php echo $_GET['error']; ?></div></div>
+			</div>
+		</div>
+	<?php } ?>
+	<?php if(isset($_GET['delete'])){ ?>
+		<div class="pc-col-20 t-col-20">
+			<div class="cf va-m list--error">
+				<div class="pc-col-20 t-col-20"><div class="login--alert ta-c">Item deletado com sucesso</div></div>
+			</div>
+		</div>
+	<?php } ?>
+	<?php if(isset($_GET['save'])){ ?>
+		<div class="pc-col-20 t-col-20">
+			<div class="cf va-m list--error">
+				<div class="pc-col-20 t-col-20"><div class="login--alert login--alert-success ta-c">Produto cadastrado com sucesso!</div></div>
+			</div>
+		</div>
+	<?php } ?>
+
 	<div class="pc-col-20">
 		<div class="list--content">
 			<div class="list--pages ta-r">
@@ -52,7 +81,7 @@ $product_sql = odbc_exec($db, '
 					<th class="ta-l">Nome</th>
 					<th class="ta-c">Imagem</th>
 					<th class="ta-l">Preço</th>
-					<th class="ta-c">Produto Ativo</th>
+					<th class="ta-c">Status</th>
 					<th class="ta-c" width="150">Ações</th>
 				</tr>
 				<? while($product = odbc_fetch_array($product_sql)){ ?>
@@ -76,8 +105,8 @@ $product_sql = odbc_exec($db, '
 							<i class="fa <?php echo $product['ativoProduto'] ? 'fa-check-circle' : 'fa-times-circle'?>" data-user-status="<?php echo $product['ativoProduto']?>" data-tipfy="<?php echo $product['ativoProduto'] ? 'Ativo' : 'Inativo'?>" data-tipfy-side="left"></i>
 						</td>
 						<td class="ta-c t-d-b list--icons">
-							<a class="fa fa-pencil d-ib" href="product.php?edit=<?php echo $product['idProduto']?>"></a>
-							<a class="fa fa-trash d-ib" href="includes/product_delete.php?id=<?php echo $product['idProduto']?>"></a>
+							<a class="fa fa-pencil d-ib" href="product.php?edit=<?php echo $product['idProduto']?>" data-tipfy="Editar"></a>
+							<a class="fa fa-trash d-ib" href="includes/product_delete.php?id=<?php echo $product['idProduto']?>" data-tipfy="Deletar"></a>
 						</td>
 					</tr>
 				<?php } ?>

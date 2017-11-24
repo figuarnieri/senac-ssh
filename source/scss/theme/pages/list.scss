@@ -23,6 +23,9 @@
 			&:last-child{
 				td{border-bottom: none;}
 			}
+			&:hover{
+				td{background-color: #f3f3f3;}
+			}
 		}
 		.fa-check-circle{color: #729c00;}
 		.fa-times-circle{color: #e66;}

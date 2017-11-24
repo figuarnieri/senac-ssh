@@ -30,6 +30,14 @@
   margin-right: 10px;
 }
 
+.form .button-back:last-child {
+  margin-right: 0;
+}
+
+.form .login--field .fa {
+  top: 1px;
+}
+
 .form--box {
   padding-top: 20px;
 }
@@ -50,10 +58,18 @@
   width: 100%;
   outline-style: none;
   padding: 6px 5px;
+  border-radius: 2px;
 }
 
 .form--input-last {
   margin-bottom: 20px;
+}
+
+.form--input-disabled {
+  background-color: #ddd;
+  color: #777;
+  border-bottom-color: #bbb;
+  cursor: not-allowed;
 }
 
 .form--thumb {

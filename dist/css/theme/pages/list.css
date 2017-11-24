@@ -66,6 +66,10 @@
   border-bottom: none;
 }
 
+.list--table tr:hover td {
+  background-color: #f3f3f3;
+}
+
 .list--table .fa-check-circle {
   color: #729c00;
 }

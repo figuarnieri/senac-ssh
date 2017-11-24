@@ -12,7 +12,7 @@ $user_sql = odbc_prepare($db, "
 odbc_execute($user_sql, array($user_id));
 
 if(empty($user_delete)){
-	header('Location: ../user_list.php');
+	header('Location: ../user_list.php?delete=1');
 } else {
 	session_destroy();
 	header('Location: ../');

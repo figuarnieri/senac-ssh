@@ -3,6 +3,11 @@
     require_once 'connect.php';
     require_once 'auth.php';
     $app_login = isset($_SESSION['userId']) ? true : false;
+    $app_userQuery = odbc_exec($db, "
+        SELECT idUsuario, loginUsuario, senhaUsuario, nomeUsuario, tipoPerfil, usuarioAtivo
+        FROM Usuario
+        WHERE idUsuario = ".$_SESSION['userId']);
+    $app_user = odbc_fetch_array($app_userQuery);
 ?>
 
 <!DOCTYPE html>
@@ -64,13 +69,7 @@
                 <img src="dist/img/logo.svg" alt="Logotipo Kanino">
             </div>
             <div class="header--name d-ib va-m">
-                <?php
-                $app_user = odbc_exec($db, "
-                    SELECT nomeUsuario, idUsuario
-                    FROM Usuario
-                    WHERE idUsuario = ".$_SESSION['userId']);
-                ?>
-                olá <?php echo odbc_fetch_array($app_user)['nomeUsuario'];?>
+                olá <?php echo $app_user['nomeUsuario'];?>
             </div>
             <form class="fl-r header--search" action="search.php">
                 <input class="d-b" type="search" name="Search" id="Search" placeholder="Buscar produtos">
@@ -86,7 +85,7 @@
                     <li class="header--item"><a class="d-b header--link fa fa-table" href="category_list.php">Categorias</a></li>
                     <li class="header--item"><a class="d-b header--link fa fa-shopping-bag" href="product_list.php">Produtos</a></li>
                     <li class="header--item-row"></li>
-                    <li class="header--item"><a class="d-b header--link fa fa-user-circle" href="meu-perfil.php">Meu Perfil</a></li>
+                    <li class="header--item"><a class="d-b header--link fa fa-user-circle" href="/user.php?edit=<?php echo $app_user['idUsuario']?>">Meu Perfil</a></li>
                     <li class="header--item"><a class="d-b header--link fa fa-sign-out" href="includes/logout.php">Logout</a></li>
                 </ul>
             </nav>

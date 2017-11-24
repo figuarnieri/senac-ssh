@@ -97,10 +97,12 @@
             regex.test(txt) ? item.closest('tr').classList.remove('d-n') : item.closest('tr').classList.add('d-n');
         });
     });
-
+	$('.login--alert').on('click', function(e){
+		$(this).slideUp(600);
+	});
 	setTimeout(function() {
 		$('.login--alert:not(.login--alert-fixed)').slideUp(600);
-	}, 2000);
+	}, 3000);
 
 
 	new Tipfy('[data-tipfy]');
