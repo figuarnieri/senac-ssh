@@ -10,7 +10,7 @@ $usuarioAtivo = array(
 );
 $user_edit = isset($_GET['edit']) && !empty($_GET['edit']) && ($_GET['edit']!=='1') ? true : false;
 $user_admin = $app_user['tipoPerfil']==='A' ? true : false;
-$user_perfil = $_GET['edit']===$app_user['idUsuario'] ? true : false;
+$user_perfil = isset($_GET['edit']) && $_GET['edit']===$app_user['idUsuario'] ? true : false;
 if($user_edit){
 	$user_sql = odbc_exec($db, '
 		SELECT idUsuario, loginUsuario, senhaUsuario, nomeUsuario, tipoPerfil, usuarioAtivo
@@ -81,7 +81,7 @@ if($user_edit){
 						<select class="form--input" name="Perfil" id="Perfil">
 							<option value="">Selecione</option>
 							<?php foreach ($tipoPerfil as $key => $value) { ?>
-								<option value="<?php echo $key; ?>" <?php echo $app_user['tipoPerfil']===$key ? 'selected' : ''?>><?php echo $value; ?></option>
+								<option value="<?php echo $key; ?>" <?php echo isset($_GET['edit']) && $app_user['tipoPerfil']===$key ? 'selected' : ''?>><?php echo $value; ?></option>
 							<?php } ?>
 						</select>
 					<?php } else { ?>
@@ -95,7 +95,7 @@ if($user_edit){
 					<?php if($user_admin){ ?>
 						<select class="form--input" type="text" name="Status" id="Status">
 							<?php foreach ($usuarioAtivo as $key => $value) { ?>
-								<option value="<?php echo $key; ?>" <?php echo $app_user['usuarioAtivo']==$key ? 'selected' : ''?>><?php echo $value; ?></option>
+								<option value="<?php echo $key; ?>" <?php echo isset($_GET['edit']) && $app_user['usuarioAtivo']==$key ? 'selected' : ''?>><?php echo $value; ?></option>
 							<?php } ?>
 						</select>
 					<?php } else { ?>

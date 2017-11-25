@@ -3,11 +3,14 @@
     require_once 'connect.php';
     require_once 'auth.php';
     $app_login = isset($_SESSION['userId']) ? true : false;
-    $app_userQuery = odbc_exec($db, "
-        SELECT idUsuario, loginUsuario, senhaUsuario, nomeUsuario, tipoPerfil, usuarioAtivo
-        FROM Usuario
-        WHERE idUsuario = ".$_SESSION['userId']);
-    $app_user = odbc_fetch_array($app_userQuery);
+    $app_search = isset($_GET['Search']) ? $_GET['Search'] : '';
+    if($app_login){
+        $app_userQuery = odbc_exec($db, "
+            SELECT idUsuario, loginUsuario, senhaUsuario, nomeUsuario, tipoPerfil, usuarioAtivo
+            FROM Usuario
+            WHERE idUsuario = ".$_SESSION['userId']);
+        $app_user = odbc_fetch_array($app_userQuery);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -65,14 +68,10 @@
             <div class="d-n t-d-ib va-m">
                 <button type="button" class="fa fa-navicon" aria-hidden="true" data-nav></button>
             </div>
-            <div class="header--logo d-ib va-m">
-                <img src="dist/img/logo.svg" alt="Logotipo Kanino">
-            </div>
-            <div class="header--name d-ib va-m">
-                olá <?php echo $app_user['nomeUsuario'];?>
-            </div>
+            <div class="header--logo d-ib va-m"><img src="dist/img/logo.svg" alt="Logotipo Kanino"></div>
+            <div class="header--name d-ib va-m">olá <?php echo utf8_encode($app_user['nomeUsuario']);?></div>
             <form class="fl-r header--search" action="search.php">
-                <input class="d-b" type="search" name="Search" id="Search" placeholder="Buscar produtos">
+                <input class="d-b" type="search" name="Search" id="Search" placeholder="Buscar produtos" value="<?php echo $app_search; ?>">
                 <button class="fa fa-search"></button>
             </form>
         </div>

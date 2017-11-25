@@ -1,26 +1,27 @@
-<?php include_once 'includes/header.php';
+<?php
+include_once 'includes/header.php';
 
-$search = $_GET['Search'];
 $product_sql = odbc_prepare($db, "
 	SELECT idProduto, nomeProduto, precProduto, ativoProduto, qtdMinEstoque, imagem
 	FROM Produto
 	WHERE nomeProduto LIKE ?");
-
+$product = odbc_execute($product_sql, array('%'.$app_search.'%'));
+$product_rows = odbc_num_rows($product_sql);
 ?>
 <link rel="stylesheet" href="dist/css/theme/pages/list.min.css">
 
-<main class="main list wrap cf">
-	<div class="pc-col-20">
-		<span class="breadcrumb fl-l fa fa-search">Busca / <strong><?php echo $search?></strong></span>
-		<div class="fl-r"><?php if(odbc_execute($product_sql, array('%'.$search.'%'))){ echo 'Resultados: '.odbc_num_rows($product_sql); }?></div>
+<main class="main list wrap cf d-b">
+	<div class="pc-col-20 cf d-b">
+		<span class="breadcrumb fl-l fa fa-search">Busca / <strong><?php echo $app_search?></strong></span>
+		<div class="fl-r"><?php echo 'Resultados: '.$product_rows; ?></div>
 	</div>
 
 	<div class="pc-col-20">
 		<div class="list--content">
-			<?php if(odbc_fetch_row($product_sql)){ ?>
+			<?php if($product_rows){ ?>
 				<div class="list--pages ta-r">
 					<div class="list--pagelist">
-						<div class="list--pagebox"><input type="search" class="list--input d-b" placeholder="Filtrar Listagem"></div>
+						<div class="list--pagebox fl-r"><input type="search" class="list--input d-b" placeholder="Filtrar Nome ou Preço" data-search-filter></div>
 					</div>
 				</div>
 				<table class="list--table" cellpadding="0" cellspacing="0">
@@ -35,6 +36,7 @@ $product_sql = odbc_prepare($db, "
 						<th class="ta-c">Produto Ativo</th>
 						<th class="ta-c" width="150">Ações</th>
 					</tr>
+					
 					<? while($product = odbc_fetch_array($product_sql)){ ?>
 						<tr>
 							<td class="ta-c t-d-n">
@@ -63,7 +65,7 @@ $product_sql = odbc_prepare($db, "
 					<?php } ?>
 				</table>
 			<?php } else { ?>
-				<h2 class="ta-c list--content-empty">Nenhum resultado encontrado para <strong>"<?php echo "$search"; ?>"</strong></h2>
+				<h2 class="ta-c list--content-empty">Nenhum resultado encontrado para <strong>"<?php echo "$app_search"; ?>"</strong></h2>
 			<?php } ?>
 		</div>
 	</div>

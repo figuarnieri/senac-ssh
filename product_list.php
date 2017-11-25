@@ -4,7 +4,7 @@ $categoryDelete = isset($_GET['category_error']) ? $_GET['category_error'] : fal
 if($categoryDelete){
 	$category = utf8_encode( odbc_fetch_array( odbc_exec($db, "SELECT nomeCategoria FROM Categoria WHERE idCategoria=$categoryDelete") )['nomeCategoria'] );
 	$error = "";
-	$sql_where = "WHERE idCategoria=$categoryDelete";
+	$sql_where = "WHERE idCategoria=$categoryDelete ORDER BY idProduto DESC";
 } else {
 	$sql_where = 'ORDER BY idProduto DESC';
 }
@@ -23,7 +23,7 @@ $product_sql = odbc_exec($db, '
 		</div>
 	<?php } else { ?>
 		<div class="pc-col-20 t-col-20 cf va-m">
-			<span class="breadcrumb fa fa-users">Produto / Listagem</span><span class="button-breadcrumb-wrap"><a href="product.php" class="button button-breadcrumb">Cadastrar</a></span>
+			<span class="breadcrumb fa fa-shopping-bag">Produto / Listagem</span><span class="button-breadcrumb-wrap"><a href="product.php" class="button button-breadcrumb">Cadastrar</a></span>
 		</div>
 	<?php } ?>
 
@@ -58,26 +58,12 @@ $product_sql = odbc_exec($db, '
 	<div class="pc-col-20">
 		<div class="list--content">
 			<div class="list--pages ta-r">
-				<div class="fl-l list--tools d-n">
-					<form action="" method="post">
-						<select class="list--input" name="MultiChange" id="MultiChange" data-selectchange>
-							<option value="">Alterar</option>
-							<option value="Inativar">Inativar</option>
-							<option value="Ativar">Ativar</option>
-							<option value="Deletar">Deletar</option>
-						</select>
-					</form>
-				</div>
 				<div class="list--pagelist">
 					<div class="list--pagebox"><input type="search" class="list--input d-b" placeholder="Filtrar Nome ou Preço" data-search-filter></div>
 				</div>
 			</div>
 			<table class="list--table" cellpadding="0" cellspacing="0">
 				<tr class="t-d-n">
-					<th class="ta-c" width="50">
-						<input type="checkbox" name="SelecioneTodos" id="SelecioneTodos" data-multichange="all">
-						<label for="SelecioneTodos" class="fa fa-square-o"></label>
-					</th>
 					<th class="ta-l">Nome</th>
 					<th class="ta-c">Imagem</th>
 					<th class="ta-l">Preço</th>
@@ -86,10 +72,6 @@ $product_sql = odbc_exec($db, '
 				</tr>
 				<? while($product = odbc_fetch_array($product_sql)){ ?>
 					<tr>
-						<td class="ta-c t-d-n">
-							<input type="checkbox" name="multicheck[]" id="id<?php echo $product['idProduto']?>" value="<?php echo $product['idProduto']?>">
-							<label for="id<?php echo $product['idProduto']?>" class="fa fa-square-o"></label>
-						</td>
 						<td t-pseudo-before="Produto: " class="t-d-b"><?php echo utf8_encode($product['nomeProduto'])?></td>
 						<td class="t-d-n">
 							<div class="list--img img-center">

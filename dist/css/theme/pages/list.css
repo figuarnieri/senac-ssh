@@ -48,13 +48,13 @@
 .list--table th {
   background-color: #482722;
   color: #fff;
-  padding: 8px 0;
+  padding: 8px 10px;
 }
 
 .list--table tr td {
   border-bottom: 1px solid #eee;
   color: #666;
-  padding: 8px 2px;
+  padding: 8px 10px;
   font-size: 17px;
 }
 

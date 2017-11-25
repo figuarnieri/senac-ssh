@@ -14,10 +14,10 @@
 	&--pagelink{background-color: #fff;border-radius: 4px;padding: 3px 14px;height: 30px;line-height: 26px;font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;}
 	&--table{
 		width: 100%;
-		th{background-color: #482722;color: #fff;padding: 8px 0;}
+		th{background-color: #482722;color: #fff;padding: 8px 10px;}
 		tr{
 			td{
-				border-bottom: 1px solid #eee;color: #666;padding: 8px 2px;font-size: 17px;
+				border-bottom: 1px solid #eee;color: #666;padding: 8px 10px;font-size: 17px;
 				.fa-square-o{color: #482722;}
 			}
 			&:last-child{

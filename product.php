@@ -68,8 +68,10 @@ $category_sql = odbc_exec($db, '
 				<div class="pc-col-17 t-col-20">
 					<select class="form--input" name="Categoria" id="Categoria" required="">
 						<option value="">Selecione</option>
-						<?php while ($category = odbc_fetch_array($category_sql)) { ?>
-							<option value="<?php echo $category['idCategoria']; ?>" <?php echo ($product_edit && $product['idCategoria']===$category['idCategoria']) ? 'selected' : ''?>><?php echo utf8_encode($category['nomeCategoria']); ?></option>
+						<?php while ( $category = odbc_fetch_array($category_sql) ) { ?>
+							<option value="<?php echo $category['idCategoria']; ?>" <?php echo ($product_edit && $product['idCategoria']===$category['idCategoria']) ? 'selected' : ''?>>
+								<?php echo utf8_encode($category['nomeCategoria']); ?>
+							</option>
 						<?php } ?>
 					</select>
 				</div>
